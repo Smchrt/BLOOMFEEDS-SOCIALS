@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="green">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bloomfeed Socials – Growing Local Brands One Post at a Time</title>
+  <meta name="description" content="Affordable social media scheduling, email automation, inquiry management, and AI assistance with Plumy for Philippine MSMEs and creators.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- THEME VARIABLES (green = original) ---------- */
+    :root {
+      --bg-dash: #f3f7f2; --page-bg: #f7fbf4;
+      --sidebar-dark: #1b3323; --sidebar-hover: #264630; --side-border: #355d40; --side-text: #cce3d1;
+      --brand-green: #2f8a55; --brand-green-dark: #1f633c;
+      --brand-pink: #e84a86; --brand-pink-dark: #d23a74; --brand-pink-soft: #ffe8f1;
+      --border-color: #cfe7ca; --surf-white: #ffffff; --surf0: #f7fbf4; --surf1: #e4f4df;
+      --txt: #24432f; --sub: #5f7d68; --scroll: #c2dec0; --st-on: #86efac; --st-off: #9ca3af;
+    }
+    html[data-theme="blue"] {
+      --bg-dash: #eef4ff; --page-bg: #f5f9ff;
+      --sidebar-dark: #0f2a5c; --sidebar-hover: #17387a; --side-border: #24498f; --side-text: #cfe0ff;
+      --brand-green: #2563eb; --brand-green-dark: #1d4ed8;
+      --brand-pink: #0ea5e9; --brand-pink-dark: #0284c7; --brand-pink-soft: #e0f2fe;
+      --border-color: #bfd6fb; --surf0: #f5f9ff; --surf1: #dbeafe;
+      --txt: #12305f; --sub: #4f6b99; --scroll: #b4cdf5; --st-on: #93c5fd; --st-off: #94a3b8;
+    }
+    html.dark {
+      --bg-dash: #000000; --page-bg: #000000;
+      --sidebar-dark: #0a0a0a; --sidebar-hover: #1a1a1a; --side-border: #2e2e2e; --side-text: #d4d4d4;
+      --brand-green: #2f8a55; --brand-green-dark: #1f633c;
+      --brand-pink: #e84a86; --brand-pink-dark: #d23a74; --brand-pink-soft: #2a1620;
+      --border-color: #2a2a2a; --surf-white: #0d0d0d; --surf0: #141414; --surf1: #1c1c1c;
+      --txt: #ededed; --sub: #a3a3a3; --scroll: #3a3a3a; --st-on: #86efac; --st-off: #737373;
+    }
+    html.dark[data-theme="blue"] {
+      --brand-green: #2563eb; --brand-green-dark: #1d4ed8;
+      --brand-pink: #0ea5e9; --brand-pink-dark: #0284c7; --brand-pink-soft: #0b2433; --st-on: #93c5fd;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--page-bg);
+      color: var(--txt);
+      margin: 0;
+      padding: 0;
+    }
+
+    .font-serif-heading {
+      font-family: 'DM Serif Display', Georgia, serif;
+    }
+
+    /* Transitions & Styling */
+    .btn-pink {
+      background-color: var(--brand-pink);
+      color: #ffffff;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(232, 74, 134, 0.25);
+    }
+    .btn-pink:hover {
+      background-color: var(--brand-pink-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-green {
+      background-color: var(--brand-green);
+      color: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .btn-green:hover {
+      background-color: var(--brand-green-dark);
+      transform: translateY(-1px);
+    }
+
+    .sidebar-link {
+      transition: all 0.2s ease;
+      color: var(--side-text);
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      background-color: var(--brand-green);
+      color: #ffffff;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--scroll);
+      border-radius: 8px;
+    }
+
+    /* Calendar day cells (tappable) */
+    .cal-day { position: relative; cursor: pointer; transition: all 0.15s ease; }
+    .cal-day:hover { box-shadow: 0 0 0 2px var(--brand-pink); transform: translateY(-1px); }
+    .cal-day.has-event::after {
+      content: ''; position: absolute; bottom: 3px; left: 50%; width: 6px; height: 6px;
+      margin-left: -3px; border-radius: 50%; background: var(--brand-pink); border: 1px solid #fff;
+    }
+    .hub-tab { transition: all 0.15s ease; }
+    .hub-tab.on { background: var(--brand-green); color: #fff; }
+    .field { width: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 12px; color: var(--txt); background: var(--surf-white); }
+    .field:focus { outline: 2px solid var(--brand-green); }
+
+    /* ---------- GENERATED THEME OVERRIDES (blue / dark-black) ---------- */
+    html.dark { color-scheme: dark; }
+    html.dark [class~="hover:text-black"]:hover { color: #ffffff !important; }
+    html.dark input, html.dark textarea, html.dark select { background-color: #0d0d0d; color: #ededed; border-color: #2a2a2a; }
+    html.dark ::placeholder { color: #777; }
+    html.dark .btn-green, html.dark .btn-pink, html.dark .hub-tab.on { color: #fff !important; }
+    html.dark[data-theme="green"] [class~="bg-[#1b3323]"] { background-color:#0a0a0a !important; }
+    html.dark[data-theme="green"] [class~="bg-[#264630]"] { background-color:#161616 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#2f8a55]"] { background-color:#2f8a55 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#355d40]"] { background-color:#2e2e2e !important; }
+    html.dark[data-theme="green"] [class~="bg-[#e4f4df]"] { background-color:#1c1c1c !important; }
+    html.dark[data-theme="green"] [class~="bg-[#e4f4df]/50"] { background-color:rgba(28,28,28,0.5) !important; }
+    html.dark[data-theme="green"] [class~="bg-[#e84a86]"] { background-color:#e84a86 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#f3f7f2]"] { background-color:#000000 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#f7fbf4]"] { background-color:#141414 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#ffe3ee]"] { background-color:#2a1620 !important; }
+    html.dark[data-theme="green"] [class~="bg-[#ffe8f1]"] { background-color:#2a1620 !important; }
+    html.dark[data-theme="green"] [class~="bg-amber-100"] { background-color:#3a2d10 !important; }
+    html.dark[data-theme="green"] [class~="bg-amber-200"] { background-color:#4a3a12 !important; }
+    html.dark[data-theme="green"] [class~="bg-amber-50/80"] { background-color:rgba(42,34,18,0.8) !important; }
+    html.dark[data-theme="green"] [class~="bg-green-100"] { background-color:#1f1f1f !important; }
+    html.dark[data-theme="green"] [class~="bg-green-200"] { background-color:#262626 !important; }
+    html.dark[data-theme="green"] [class~="bg-green-50"] { background-color:#141414 !important; }
+    html.dark[data-theme="green"] [class~="bg-pink-100"] { background-color:#2a1620 !important; }
+    html.dark[data-theme="green"] [class~="bg-pink-50"] { background-color:#2a1620 !important; }
+    html.dark[data-theme="green"] [class~="bg-pink-50/60"] { background-color:rgba(42,22,32,0.6) !important; }
+    html.dark[data-theme="green"] [class~="bg-red-100"] { background-color:#3b1a1d !important; }
+    html.dark[data-theme="green"] [class~="bg-red-200"] { background-color:#4a2024 !important; }
+    html.dark[data-theme="green"] [class~="bg-red-50"] { background-color:#2a1517 !important; }
+    html.dark[data-theme="green"] [class~="bg-red-50/80"] { background-color:rgba(42,21,23,0.8) !important; }
+    html.dark[data-theme="green"] [class~="bg-white"] { background-color:#0d0d0d !important; }
+    html.dark[data-theme="green"] [class~="border-[#264630]"] { border-color:#161616 !important; }
+    html.dark[data-theme="green"] [class~="border-[#2f8a55]"] { border-color:#2f8a55 !important; }
+    html.dark[data-theme="green"] [class~="border-[#2f8a55]/30"] { border-color:rgba(47,138,85,0.3) !important; }
+    html.dark[data-theme="green"] [class~="border-[#355d40]"] { border-color:#2e2e2e !important; }
+    html.dark[data-theme="green"] [class~="border-[#cfe7ca]"] { border-color:#2a2a2a !important; }
+    html.dark[data-theme="green"] [class~="border-[#e84a86]"] { border-color:#e84a86 !important; }
+    html.dark[data-theme="green"] [class~="border-[#e84a86]/40"] { border-color:rgba(232,74,134,0.4) !important; }
+    html.dark[data-theme="green"] [class~="border-amber-200"] { border-color:#5a4a1f !important; }
+    html.dark[data-theme="green"] [class~="border-pink-200"] { border-color:#3a2230 !important; }
+    html.dark[data-theme="green"] [class~="border-red-200"] { border-color:#5a2a2f !important; }
+    html.dark[data-theme="green"] [class~="border-white"] { border-color:#0d0d0d !important; }
+    html.dark[data-theme="green"] [class~="text-[#1f633c]"] { color:#8fe3b0 !important; }
+    html.dark[data-theme="green"] [class~="text-[#24432f]"] { color:#ededed !important; }
+    html.dark[data-theme="green"] [class~="text-[#2f8a55]"] { color:#6fd79a !important; }
+    html.dark[data-theme="green"] [class~="text-[#5f7d68]"] { color:#a3a3a3 !important; }
+    html.dark[data-theme="green"] [class~="text-[#c2406f]"] { color:#ff9cc0 !important; }
+    html.dark[data-theme="green"] [class~="text-[#e84a86]"] { color:#ff86b0 !important; }
+    html.dark[data-theme="green"] [class~="text-amber-600"] { color:#f2b84b !important; }
+    html.dark[data-theme="green"] [class~="text-amber-800"] { color:#f5c86a !important; }
+    html.dark[data-theme="green"] [class~="text-amber-900"] { color:#f5c86a !important; }
+    html.dark[data-theme="green"] [class~="text-gray-300"] { color:#666666 !important; }
+    html.dark[data-theme="green"] [class~="text-gray-400"] { color:#777777 !important; }
+    html.dark[data-theme="green"] [class~="text-green-800"] { color:#6fd79a !important; }
+    html.dark[data-theme="green"] [class~="text-green-900"] { color:#6fd79a !important; }
+    html.dark[data-theme="green"] [class~="text-red-700"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="green"] [class~="text-red-800"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="green"] [class~="text-red-900"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="green"] [class~="!text-[#2f8a55]"] { color:#6fd79a !important; }
+    html.dark[data-theme="green"] .group:hover [class~="group-hover:text-[#e84a86]"] { color:#ff86b0 !important; }
+    html.dark[data-theme="green"] [class~="hover:bg-[#ffe3ee]"]:hover { background-color:#2a1620 !important; }
+    html.dark[data-theme="green"] [class~="hover:border-[#e84a86]"]:hover { border-color:#e84a86 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#1b3323]"] { background-color:#0f2a5c !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#264630]"] { background-color:#17387a !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#2f8a55]"] { background-color:#2563eb !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#355d40]"] { background-color:#24498f !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#e4f4df]"] { background-color:#dbeafe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#e4f4df]/50"] { background-color:rgba(219,234,254,0.5) !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#e84a86]"] { background-color:#0ea5e9 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#f3f7f2]"] { background-color:#eef4ff !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#f7fbf4]"] { background-color:#f5f9ff !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#ffe3ee]"] { background-color:#e0f2fe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-[#ffe8f1]"] { background-color:#e0f2fe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-green-100"] { background-color:#dbeafe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-green-200"] { background-color:#bfdbfe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-green-50"] { background-color:#eff6ff !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-pink-100"] { background-color:#e0f2fe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-pink-50"] { background-color:#e0f2fe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="bg-pink-50/60"] { background-color:rgba(224,242,254,0.6) !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#264630]"] { border-color:#17387a !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#2f8a55]"] { border-color:#2563eb !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#2f8a55]/30"] { border-color:rgba(37,99,235,0.3) !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#355d40]"] { border-color:#24498f !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#cfe7ca]"] { border-color:#bfd6fb !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#e84a86]"] { border-color:#0ea5e9 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-[#e84a86]/40"] { border-color:rgba(14,165,233,0.4) !important; }
+    html[data-theme="blue"]:not(.dark) [class~="border-pink-200"] { border-color:#bae6fd !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#1f633c]"] { color:#1d4ed8 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#24432f]"] { color:#12305f !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#2f8a55]"] { color:#2563eb !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#5f7d68]"] { color:#4f6b99 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#c2406f]"] { color:#0369a1 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-[#e84a86]"] { color:#0ea5e9 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-100"] { color:#dbeafe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-200"] { color:#bfdbfe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-300"] { color:#93c5fd !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-400"] { color:#60a5fa !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-800"] { color:#1e40af !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-green-900"] { color:#1e3a8a !important; }
+    html[data-theme="blue"]:not(.dark) [class~="text-pink-300"] { color:#7dd3fc !important; }
+    html[data-theme="blue"]:not(.dark) [class~="!text-[#2f8a55]"] { color:#2563eb !important; }
+    html[data-theme="blue"]:not(.dark) .group:hover [class~="group-hover:text-[#e84a86]"] { color:#0ea5e9 !important; }
+    html[data-theme="blue"]:not(.dark) [class~="hover:bg-[#ffe3ee]"]:hover { background-color:#e0f2fe !important; }
+    html[data-theme="blue"]:not(.dark) [class~="hover:border-[#e84a86]"]:hover { border-color:#0ea5e9 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#1b3323]"] { background-color:#0a0a0a !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#264630]"] { background-color:#161616 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#2f8a55]"] { background-color:#2563eb !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#355d40]"] { background-color:#2e2e2e !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#e4f4df]"] { background-color:#1c1c1c !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#e4f4df]/50"] { background-color:rgba(28,28,28,0.5) !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#e84a86]"] { background-color:#0ea5e9 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#f3f7f2]"] { background-color:#000000 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#f7fbf4]"] { background-color:#141414 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#ffe3ee]"] { background-color:#0b2433 !important; }
+    html.dark[data-theme="blue"] [class~="bg-[#ffe8f1]"] { background-color:#0b2433 !important; }
+    html.dark[data-theme="blue"] [class~="bg-amber-100"] { background-color:#3a2d10 !important; }
+    html.dark[data-theme="blue"] [class~="bg-amber-200"] { background-color:#4a3a12 !important; }
+    html.dark[data-theme="blue"] [class~="bg-amber-50/80"] { background-color:rgba(42,34,18,0.8) !important; }
+    html.dark[data-theme="blue"] [class~="bg-green-100"] { background-color:#1f1f1f !important; }
+    html.dark[data-theme="blue"] [class~="bg-green-200"] { background-color:#262626 !important; }
+    html.dark[data-theme="blue"] [class~="bg-green-50"] { background-color:#141414 !important; }
+    html.dark[data-theme="blue"] [class~="bg-pink-100"] { background-color:#0b2433 !important; }
+    html.dark[data-theme="blue"] [class~="bg-pink-50"] { background-color:#0b2433 !important; }
+    html.dark[data-theme="blue"] [class~="bg-pink-50/60"] { background-color:rgba(11,36,51,0.6) !important; }
+    html.dark[data-theme="blue"] [class~="bg-red-100"] { background-color:#3b1a1d !important; }
+    html.dark[data-theme="blue"] [class~="bg-red-200"] { background-color:#4a2024 !important; }
+    html.dark[data-theme="blue"] [class~="bg-red-50"] { background-color:#2a1517 !important; }
+    html.dark[data-theme="blue"] [class~="bg-red-50/80"] { background-color:rgba(42,21,23,0.8) !important; }
+    html.dark[data-theme="blue"] [class~="bg-white"] { background-color:#0d0d0d !important; }
+    html.dark[data-theme="blue"] [class~="border-[#264630]"] { border-color:#161616 !important; }
+    html.dark[data-theme="blue"] [class~="border-[#2f8a55]"] { border-color:#2563eb !important; }
+    html.dark[data-theme="blue"] [class~="border-[#2f8a55]/30"] { border-color:rgba(37,99,235,0.3) !important; }
+    html.dark[data-theme="blue"] [class~="border-[#355d40]"] { border-color:#2e2e2e !important; }
+    html.dark[data-theme="blue"] [class~="border-[#cfe7ca]"] { border-color:#2a2a2a !important; }
+    html.dark[data-theme="blue"] [class~="border-[#e84a86]"] { border-color:#0ea5e9 !important; }
+    html.dark[data-theme="blue"] [class~="border-[#e84a86]/40"] { border-color:rgba(14,165,233,0.4) !important; }
+    html.dark[data-theme="blue"] [class~="border-amber-200"] { border-color:#5a4a1f !important; }
+    html.dark[data-theme="blue"] [class~="border-pink-200"] { border-color:#12384f !important; }
+    html.dark[data-theme="blue"] [class~="border-red-200"] { border-color:#5a2a2f !important; }
+    html.dark[data-theme="blue"] [class~="border-white"] { border-color:#0d0d0d !important; }
+    html.dark[data-theme="blue"] [class~="text-[#1f633c]"] { color:#9ec3ff !important; }
+    html.dark[data-theme="blue"] [class~="text-[#24432f]"] { color:#ededed !important; }
+    html.dark[data-theme="blue"] [class~="text-[#2f8a55]"] { color:#7fb0ff !important; }
+    html.dark[data-theme="blue"] [class~="text-[#5f7d68]"] { color:#a3a3a3 !important; }
+    html.dark[data-theme="blue"] [class~="text-[#c2406f]"] { color:#7dd3fc !important; }
+    html.dark[data-theme="blue"] [class~="text-[#e84a86]"] { color:#5cc8ff !important; }
+    html.dark[data-theme="blue"] [class~="text-amber-600"] { color:#f2b84b !important; }
+    html.dark[data-theme="blue"] [class~="text-amber-800"] { color:#f5c86a !important; }
+    html.dark[data-theme="blue"] [class~="text-amber-900"] { color:#f5c86a !important; }
+    html.dark[data-theme="blue"] [class~="text-gray-300"] { color:#666666 !important; }
+    html.dark[data-theme="blue"] [class~="text-gray-400"] { color:#777777 !important; }
+    html.dark[data-theme="blue"] [class~="text-green-100"] { color:#dbeafe !important; }
+    html.dark[data-theme="blue"] [class~="text-green-200"] { color:#bfdbfe !important; }
+    html.dark[data-theme="blue"] [class~="text-green-300"] { color:#93c5fd !important; }
+    html.dark[data-theme="blue"] [class~="text-green-400"] { color:#60a5fa !important; }
+    html.dark[data-theme="blue"] [class~="text-green-800"] { color:#7fb0ff !important; }
+    html.dark[data-theme="blue"] [class~="text-green-900"] { color:#7fb0ff !important; }
+    html.dark[data-theme="blue"] [class~="text-pink-300"] { color:#7dd3fc !important; }
+    html.dark[data-theme="blue"] [class~="text-red-700"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="blue"] [class~="text-red-800"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="blue"] [class~="text-red-900"] { color:#ff9aa2 !important; }
+    html.dark[data-theme="blue"] [class~="!text-[#2f8a55]"] { color:#7fb0ff !important; }
+    html.dark[data-theme="blue"] .group:hover [class~="group-hover:text-[#e84a86]"] { color:#5cc8ff !important; }
+    html.dark[data-theme="blue"] [class~="hover:bg-[#ffe3ee]"]:hover { background-color:#0b2433 !important; }
+    html.dark[data-theme="blue"] [class~="hover:border-[#e84a86]"]:hover { border-color:#0ea5e9 !important; }
+
+    /* ---------- BLACK & WHITE (colors only, layout untouched) ---------- */
+    html[data-theme="bw"] body > *:not(script):not(style) { filter: grayscale(1); }
+
+    /* ---------- ON / OFF KEYS ---------- */
+    .switch { position: relative; width: 38px; height: 22px; border-radius: 9999px; background: var(--side-border); border: 1px solid rgba(255,255,255,.14); transition: background .2s ease; flex-shrink: 0; cursor: pointer; padding: 0; }
+    .switch .knob { position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.45); transition: transform .2s ease; }
+    .switch[aria-checked="true"] { background: var(--brand-pink); }
+    .switch[aria-checked="true"] .knob { transform: translateX(16px); }
+    .switch:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .st-pill { font-size: 10px; font-weight: 800; display: inline-flex; align-items: center; gap: 4px; }
+    .st-pill.on { color: var(--st-on); }
+    .st-pill.off { color: var(--st-off); }
+    .auto-item.off .sidebar-link { opacity: .55; }
+
+    /* ---------- PLUMY CHAT ---------- */
+    .chat-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--brand-pink-soft); display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
+    .typing i { display: inline-block; width: 6px; height: 6px; margin: 0 2px; border-radius: 50%; background: var(--sub); animation: blink 1s infinite; }
+    .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+    @keyframes blink { 0%,80%,100% { opacity: .25; } 40% { opacity: 1; } }
+
+    /* ---------- THEME PICKER ---------- */
+    .theme-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 6px; border-radius: 16px; border: 2px solid var(--border-color); background: var(--surf0); color: var(--txt); font-size: 11px; text-align: center; }
+    .theme-card.sel { border-color: var(--brand-pink); box-shadow: 0 0 0 2px var(--brand-pink) inset; }
+    .theme-sw { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--surf-white); box-shadow: 0 0 0 1px var(--border-color); }
+
+    /* ---------- LIVE GLOWING CLIP ---------- */
+    @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .live-clip { position: relative; border-radius: 28px; padding: 3px; isolation: isolate;
+      background: conic-gradient(from var(--ang), var(--brand-green), var(--brand-pink), #7dd3fc, var(--brand-green)); animation: clipSpin 6s linear infinite; }
+    .live-clip::before { content: ""; position: absolute; inset: -14px; border-radius: 40px; background: inherit; filter: blur(26px); opacity: .5; z-index: -1; animation: clipGlow 3s ease-in-out infinite; }
+    @keyframes clipSpin { to { --ang: 360deg; } }
+    @keyframes clipGlow { 0%,100% { opacity: .32; transform: scale(.98); } 50% { opacity: .78; transform: scale(1.03); } }
+    .clip-frame { position: relative; border-radius: 25px; overflow: hidden; background: linear-gradient(160deg,#07110b,#0b0b14); color: #e9fff1; }
+    .clip-top { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 11px; font-weight: 800; color: #b9d8c4; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .live-badge { display: inline-flex; align-items: center; gap: 5px; background: #e11d48; color: #fff; border-radius: 9999px; padding: 2px 8px; font-size: 10px; font-weight: 900; letter-spacing: .06em; box-shadow: 0 0 14px rgba(225,29,72,.7); }
+    .live-badge i { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: livePulse 1.2s ease-in-out infinite; }
+    @keyframes livePulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.7); opacity: .4; } }
+    .clip-stage { position: relative; height: clamp(215px, 52vw, 250px); overflow: hidden; }
+    .scene { position: absolute; inset: 0; padding: 16px; display: flex; flex-direction: column; justify-content: center; gap: 10px; opacity: 0; transform: translateY(8px); transition: opacity .4s ease, transform .4s ease; pointer-events: none; }
+    .scene.on { opacity: 1; transform: none; }
+    .scene-title { font-weight: 900; font-size: 14px; color: #fff; text-shadow: 0 0 14px rgba(125,255,170,.55); }
+    .clip-typed { font-size: 13px; line-height: 1.5; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 12px; overflow-wrap: anywhere; }
+    .caret { display: inline-block; width: 2px; height: 1em; margin-left: 2px; vertical-align: -2px; background: #7dffb0; animation: blinkCaret .8s steps(2) infinite; }
+    @keyframes blinkCaret { 50% { opacity: 0; } }
+    .clip-week { display: grid; grid-template-columns: repeat(7, minmax(0,1fr)); gap: 6px; }
+    .clip-week i { font-style: normal; text-align: center; font-weight: 800; font-size: 12px; padding: 10px 0; border-radius: 10px; background: rgba(255,255,255,.07); color: #b9d8c4; }
+    .clip-week i.hot { background: var(--brand-pink); color: #fff; box-shadow: 0 0 18px var(--brand-pink); animation: hotPulse 1.2s ease-in-out infinite; }
+    @keyframes hotPulse { 50% { transform: scale(1.12); } }
+    .clip-note { font-size: 12px; color: #b9d8c4; overflow-wrap: anywhere; }
+    .pb-row { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; }
+    .pb-row > span:first-child { width: 6.5rem; flex-shrink: 0; }
+    .pb { flex: 1; height: 8px; border-radius: 9999px; background: rgba(255,255,255,.12); overflow: hidden; }
+    .pb i { display: block; height: 100%; width: 0; border-radius: 9999px; background: linear-gradient(90deg, var(--brand-green), #7dffb0); box-shadow: 0 0 10px #7dffb0; }
+    .scene.on .pb i { animation: pbFill 1.6s ease-out forwards; }
+    @keyframes pbFill { to { width: 100%; } }
+    .scene-done { position: relative; align-self: center; width: 74px; height: 74px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: radial-gradient(circle, #34d57b, #1f9d58); color: #fff; font-size: 38px; box-shadow: 0 0 34px rgba(52,213,123,.8); }
+    .ripple { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #7dffb0; animation: ripple 1.6s ease-out infinite; }
+    @keyframes ripple { from { transform: scale(1); opacity: .9; } to { transform: scale(2); opacity: 0; } }
+    .clip-bar { height: 3px; background: rgba(255,255,255,.1); }
+    .clip-bar > div { height: 100%; width: 0; background: linear-gradient(90deg, var(--brand-green), var(--brand-pink)); }
+    .clip-ctrl { display: flex; align-items: center; gap: 10px; padding: 8px 14px 10px; font-size: 10px; color: #8fb09c; }
+    .clip-ctrl button#clipBtn { width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 11px; flex-shrink: 0; }
+    .clip-dots { display: inline-flex; gap: 6px; flex-shrink: 0; }
+    .clip-dots button { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.25); padding: 0; }
+    .clip-dots button.on { background: var(--brand-pink); box-shadow: 0 0 8px var(--brand-pink); }
+    .spark { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 14px 4px var(--brand-pink); animation: twinkle 2.4s ease-in-out infinite; z-index: 2; }
+    @keyframes twinkle { 0%,100% { transform: scale(.4); opacity: .3; } 50% { transform: scale(1); opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .live-clip, .live-clip::before, .spark, .live-badge i, .clip-week i.hot, .ripple, .caret { animation: none !important; } }
+
+    /* ---------- RESPONSIVE GUARD: nothing overlaps on rotate / resize ---------- */
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 5rem; }
+    body { overflow-x: hidden; }
+    *, *::before, *::after { min-width: 0; }
+    p, h1, h2, h3, h4, li, label, button, a, span, b, textarea { overflow-wrap: break-word; }
+    img, svg, video, canvas { max-width: 100%; }
+    .dash-grid:not(.hidden) { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; }
+    .dash-left { grid-area: auto; } .dash-center { grid-area: auto; } .dash-right { grid-area: auto; }
+    @media (min-width: 1024px) {
+      .dash-grid:not(.hidden) { grid-template-columns: 16rem minmax(0, 1fr); grid-template-areas: "left center" "left right"; }
+      .dash-left { grid-area: left; } .dash-center { grid-area: center; } .dash-right { grid-area: right; }
+    }
+    @media (min-width: 1280px) {
+      .dash-grid:not(.hidden) { grid-template-columns: 16rem minmax(0, 1fr) 20rem; grid-template-areas: "left center right"; }
+    }
+    #userDashboardInterface .cal-day { font-size: clamp(10px, 2.6vw, 13px); padding: clamp(3px, 1vw, 8px); }
+    @media (max-width: 640px) { #weatherPanel { left: .5rem !important; right: .5rem !important; width: auto !important; max-width: none !important; } }
+    @media (max-width: 420px) { [id$="Modal"] > div { padding: 1rem !important; } }
+    @media (max-height: 520px) and (orientation: landscape) {
+      header { position: static !important; }
+      [id$="Modal"] { align-items: flex-start !important; overflow-y: auto; padding: .5rem !important; }
+      [id$="Modal"] > div { max-height: none !important; }
+      #chatLog { max-height: 10rem !important; }
+    }
+
+    /* ---------- PROJECT BOARD SEASON THEMES ---------- */
+    .board-card { --bd-bg:var(--surf-white); --bd-fg:var(--txt); --bd-sub:var(--sub); --bd-ac:var(--brand-green); --bd-panel:var(--surf0); --bd-line:var(--border-color); --bd-btnfg:#ffffff;
+      background: var(--bd-bg); color: var(--bd-fg); border: 2px solid var(--bd-ac); }
+    .board-card[data-season="halloween"] { --bd-bg:linear-gradient(160deg,#150b1f 0%,#2a1240 58%,#3b1a06 100%); --bd-fg:#ffe7c7; --bd-sub:#d9b98f; --bd-ac:#ff7a00; --bd-panel:rgba(255,255,255,.07); --bd-line:rgba(255,122,0,.4); --bd-btnfg:#1a0f24; }
+    .board-card[data-season="christmas"] { --bd-bg:linear-gradient(160deg,#5c0f1d 0%,#0f4a2a 100%); --bd-fg:#fff4e0; --bd-sub:#f3d9b6; --bd-ac:#f5c542; --bd-panel:rgba(255,255,255,.09); --bd-line:rgba(245,197,66,.45); --bd-btnfg:#3a0a12; }
+    .board-card[data-season="nye"] { --bd-bg:linear-gradient(160deg,#080b1e 0%,#1b1a3f 58%,#2b1d4a 100%); --bd-fg:#eef0ff; --bd-sub:#aeb4d9; --bd-ac:#f5d06a; --bd-panel:rgba(255,255,255,.07); --bd-line:rgba(245,208,106,.4); --bd-btnfg:#0b1026; }
+    .board-card .b-sub { color: var(--bd-sub); }
+    .board-card .b-ac { color: var(--bd-ac); }
+    .board-card .b-panel { background: var(--bd-panel); border: 1px solid var(--bd-line); border-radius: 16px; }
+    .board-card .b-btn { background: var(--bd-ac); color: var(--bd-btnfg); font-weight: 800; border-radius: 9999px; padding: 7px 14px; font-size: 12px; transition: transform .15s; }
+    .board-card .b-btn:hover { transform: translateY(-1px); }
+    .board-card .b-ghost { border: 1px solid var(--bd-line); border-radius: 9999px; padding: 7px 12px; font-size: 12px; font-weight: 700; color: var(--bd-fg); }
+    .board-card .b-ghost:hover { border-color: var(--bd-ac); }
+    .board-card .b-bar { background: var(--bd-line); border-radius: 9999px; height: 8px; overflow: hidden; }
+    .board-card .b-bar > div { background: var(--bd-ac); height: 100%; transition: width .3s ease; }
+    .board-card textarea { background: var(--bd-panel) !important; color: var(--bd-fg) !important; border: 1px solid var(--bd-line) !important; }
+    .float-deco span { display: inline-block; animation: floaty 3s ease-in-out infinite; }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-6px) rotate(4deg); } }
+
+    /* Modal Animation */
+    .mod-sheet {
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- SVG LOGO ASSET DEFINITION -->
+  <svg style="display:none">
+    <symbol id="lg" viewBox="0 0 100 100">
+      <rect x="12" y="32" width="62" height="64" rx="7" fill="#a9c9a6"/>
+      <rect x="22" y="28" width="70" height="62" rx="9" fill="#3f7050"/>
+      <rect x="33" y="50" width="50" height="33" rx="5" fill="#f58fb8"/>
+      <path d="M33 54l25 16 25-16" stroke="#fbc3d8" stroke-width="3" fill="none"/>
+      <circle cx="85" cy="48" r="8" fill="#fbd5e3"/>
+      <text x="85" y="52" font-size="10" text-anchor="middle" fill="#c2406f" font-weight="700">1</text>
+      <path d="M32 6h38a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8H50l-10 8v-8h-8a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8z" fill="#fff" stroke="#e98ab4" stroke-width="3"/>
+      <path d="M6 30a9 9 0 0 1 18 0v7H6z" fill="#e8559a"/>
+      <rect x="4" y="36" width="22" height="4" rx="2" fill="#c63d82"/>
+      <path d="M82 12l15-6v24l-15-6z" fill="#fff" stroke="#e98ab4" stroke-width="2.5"/>
+      <rect x="73" y="14" width="10" height="12" rx="2" fill="#e8559a"/>
+    </symbol>
+  </svg>
+
+  <!-- =============================================================== -->
+  <!-- GLOBAL HEADER WITH PROFILE / LOG IN SWITCH TOGGLE               -->
+  <!-- =============================================================== -->
+  <header class="bg-[#e4f4df] border-b border-[#cfe7ca] sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <!-- Brand Logo -->
+      <a href="#top" onclick="showPublicLanding()" class="flex items-center gap-2 font-black text-xl text-[#2f8a55]">
+        <svg class="w-9 h-9"><use href="#lg"/></svg>
+        <span>Bloomfeed Socials</span>
+      </a>
+
+      <!-- Navigation Links (Visible on Public View) -->
+      <nav id="publicNav" class="hidden" aria-hidden="true"></nav>
+
+      <!-- USER PROFILE LOG IN / ACCOUNT BUTTON (INTERFACE SWITCH) -->
+      <div class="flex flex-wrap items-center justify-end gap-2 sm:gap-3">
+        <button id="themeToggle" onclick="toggleTheme()" title="Switch light / dark mode" class="bg-white border-2 border-[#2f8a55] hover:border-[#e84a86] px-3 py-1.5 rounded-full text-xs font-black text-[#2f8a55] transition-all">🌙 Dark</button>
+        <button id="userAccountBtn" onclick="toggleUserDashboard()" class="bg-white border-2 border-[#2f8a55] hover:border-[#e84a86] px-3.5 py-1.5 rounded-full flex items-center gap-2.5 shadow-sm transition-all group">
+          <div class="w-7 h-7 rounded-full bg-[#e84a86] text-white flex items-center justify-center font-black text-xs group-hover:scale-105 transition-transform">
+            SG
+          </div>
+          <div class="text-left leading-tight hidden sm:block">
+            <div id="userAccountLabel" class="text-xs font-black text-[#2f8a55] group-hover:text-[#e84a86]">
+              User Account / Log In
+            </div>
+            <div id="userAccountSub" class="text-[10px] text-[#5f7d68] font-semibold">
+              Tap to access Dashboard
+            </div>
+          </div>
+          <span id="userStatusBadge" class="text-[10px] bg-[#e4f4df] text-[#2f8a55] font-black px-2 py-0.5 rounded-full border border-[#2f8a55]/30">
+            Guest
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================== -->
+  <!-- INTERFACE 1: PUBLIC LANDING PAGE INTERFACE                      -->
+  <!-- =============================================================== -->
+  <div id="publicLandingInterface" class="w-full">
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-16">
+
+      <!-- Hero Section -->
+      <section class="grid md:grid-cols-12 gap-8 items-center py-6">
+        <div class="md:col-span-7 space-y-4">
+          <span class="inline-block bg-[#ffe3ee] text-[#e84a86] font-extrabold text-xs px-3 py-1 rounded-full tracking-wide">
+            🇵🇭 BUILT FOR PHILIPPINE MSMEs &amp; FREELANCERS
+          </span>
+          <h1 class="font-serif-heading text-4xl sm:text-5xl lg:text-6xl text-[#2f8a55] leading-tight">
+            Growing Local Brands <em class="not-italic text-[#e84a86]">One Post</em> at a Time
+          </h1>
+          <p class="text-base sm:text-lg text-[#5f7d68] max-w-xl">
+            Schedule social posts, automate customer emails and inquiries, track deadlines, and generate instant captions with Plumy AI. All starting at ₱299 a month.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <button onclick="toggleUserDashboard()" class="btn-pink font-extrabold text-sm px-6 py-3 rounded-full">
+              Go to User Dashboard →
+            </button>
+            <a href="#pricing" class="btn-green bg-transparent border-2 border-[#2f8a55] !text-[#2f8a55] hover:!text-white font-extrabold text-sm px-6 py-3 rounded-full">
+              See Pricing Plans
+            </a>
+          </div>
+        </div>
+
+        <!-- LIVE GLOWING CLIP (logged-out hero) -->
+        <div class="md:col-span-5 min-w-0">
+          <div id="liveClip" class="live-clip" role="img" aria-label="Looping live demo: Plumy writes a caption, schedules it, and posts to Instagram, Facebook and TikTok">
+            <span class="spark" style="top:8%;left:-4%"></span><span class="spark" style="top:70%;right:-5%;animation-delay:.8s"></span><span class="spark" style="bottom:-4%;left:30%;animation-delay:1.6s"></span>
+            <div class="clip-frame">
+              <div class="clip-top">
+                <span class="live-badge"><i></i> LIVE</span>
+                <span class="truncate">Plumy demo</span>
+                <span id="clipTime" class="ml-auto shrink-0">0:00 / 0:12</span>
+              </div>
+              <div class="clip-stage">
+                <div class="scene on" data-scene="0">
+                  <div class="scene-title">✍️ Plumy is writing your caption…</div>
+                  <div class="clip-typed"><span id="clipTyped"></span><b class="caret"></b></div>
+                </div>
+                <div class="scene" data-scene="1">
+                  <div class="scene-title">🗓️ Scheduling for the best time</div>
+                  <div class="clip-week"><i>M</i><i>T</i><i class="hot">W</i><i>T</i><i>F</i><i>S</i><i>S</i></div>
+                  <div class="clip-note">⏰ Wed · 6:00 PM &nbsp;·&nbsp; 🔔 Reminder 1 hour before</div>
+                </div>
+                <div class="scene" data-scene="2">
+                  <div class="scene-title">📲 Posting everywhere…</div>
+                  <div class="pb-row"><span>📸 Instagram</span><span class="pb"><i style="animation-delay:.1s"></i></span></div>
+                  <div class="pb-row"><span>📘 Facebook</span><span class="pb"><i style="animation-delay:.7s"></i></span></div>
+                  <div class="pb-row"><span>🎵 TikTok</span><span class="pb"><i style="animation-delay:1.3s"></i></span></div>
+                </div>
+                <div class="scene" data-scene="3">
+                  <div class="scene-done"><span class="ripple"></span><b>✓</b></div>
+                  <div class="scene-title text-center">Posted on all 3 channels!</div>
+                  <div class="clip-note text-center">0 missed deadlines · replies handled by Plumy</div>
+                </div>
+              </div>
+              <div class="clip-bar"><div id="clipProg"></div></div>
+              <div class="clip-ctrl">
+                <button id="clipBtn" type="button" aria-label="Pause or play the demo clip" onclick="clipToggle()">⏸</button>
+                <span class="clip-dots"><button type="button" aria-label="Scene 1" onclick="clipJump(0)"></button><button type="button" aria-label="Scene 2" onclick="clipJump(1)"></button><button type="button" aria-label="Scene 3" onclick="clipJump(2)"></button><button type="button" aria-label="Scene 4" onclick="clipJump(3)"></button></span>
+                <span class="truncate">Facebook · Instagram · TikTok · Email</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Target Audience Grid -->
+      <section id="who" class="grid sm:grid-cols-3 gap-5">
+        <div class="bg-white border-1.5 border-[#2f8a55] border rounded-2xl p-5 shadow-sm hover:border-[#e84a86] transition-colors">
+          <div class="text-3xl mb-2">🎓</div>
+          <h3 class="font-serif-heading text-xl text-[#2f8a55] mb-1">Students &amp; Campus Sellers</h3>
+          <p class="text-xs text-[#5f7d68]">Run your online shop between classes without burning your allowance or missing order updates.</p>
+        </div>
+        <div class="bg-white border-1.5 border-[#2f8a55] border rounded-2xl p-5 shadow-sm hover:border-[#e84a86] transition-colors">
+          <div class="text-3xl mb-2">💻</div>
+          <h3 class="font-serif-heading text-xl text-[#2f8a55] mb-1">Solopreneurs &amp; Freelancers</h3>
+          <p class="text-xs text-[#5f7d68]">Keep your side hustle posting and follow-ups active while you focus on client deliverables.</p>
+        </div>
+        <div class="bg-white border-1.5 border-[#2f8a55] border rounded-2xl p-5 shadow-sm hover:border-[#e84a86] transition-colors">
+          <div class="text-3xl mb-2">🏪</div>
+          <h3 class="font-serif-heading text-xl text-[#2f8a55] mb-1">MSMEs &amp; Local Vendors</h3>
+          <p class="text-xs text-[#5f7d68]">Cafés, boutiques, and social shops: organize content plans and auto-reply to customer questions.</p>
+        </div>
+      </section>
+
+      <!-- Public Features Summary -->
+      <section id="features" class="space-y-6">
+        <div class="text-center">
+          <h2 class="font-serif-heading text-3xl sm:text-4xl text-[#2f8a55]">Everything You Need to Bloom</h2>
+          <p class="text-xs sm:text-sm text-[#5f7d68] mt-1">Seven powerful tools accessible right inside your user dashboard.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div onclick="toggleUserDashboard()" class="bg-white border border-[#2f8a55] rounded-2xl p-5 hover:border-[#e84a86] hover:shadow-md cursor-pointer transition-all">
+            <div class="text-2xl mb-2">✉️</div>
+            <h3 class="font-serif-heading text-lg text-[#2f8a55]">Email &amp; Inquiry</h3>
+            <p class="text-xs text-[#5f7d68] mt-1">Automated email update campaigns and instant inquiry auto-replies.</p>
+            <span class="inline-block mt-3 text-xs font-black text-[#e84a86]">Open in Dashboard →</span>
+          </div>
+          <div onclick="toggleUserDashboard()" class="bg-white border border-[#2f8a55] rounded-2xl p-5 hover:border-[#e84a86] hover:shadow-md cursor-pointer transition-all">
+            <div class="text-2xl mb-2">🗓️</div>
+            <h3 class="font-serif-heading text-lg text-[#2f8a55]">Central Calendar</h3>
+            <p class="text-xs text-[#5f7d68] mt-1">Organize activities, seasonal projects, and scheduled social posts.</p>
+            <span class="inline-block mt-3 text-xs font-black text-[#e84a86]">Open in Dashboard →</span>
+          </div>
+          <div onclick="toggleUserDashboard()" class="bg-white border border-[#2f8a55] rounded-2xl p-5 hover:border-[#e84a86] hover:shadow-md cursor-pointer transition-all">
+            <div class="text-2xl mb-2">🔔</div>
+            <h3 class="font-serif-heading text-lg text-[#2f8a55]">Posting Reminders</h3>
+            <p class="text-xs text-[#5f7d68] mt-1">Stay updated with exact posting deadlines set by Plumy AI.</p>
+            <span class="inline-block mt-3 text-xs font-black text-[#e84a86]">Open in Dashboard →</span>
+          </div>
+          <div onclick="toggleUserDashboard()" class="bg-white border border-[#2f8a55] rounded-2xl p-5 hover:border-[#e84a86] hover:shadow-md cursor-pointer transition-all">
+            <div class="text-2xl mb-2">🌸</div>
+            <h3 class="font-serif-heading text-lg text-[#2f8a55]">Plumy AI Support</h3>
+            <p class="text-xs text-[#5f7d68] mt-1">Generate captions, reply drafts, and brainstorm content ideas instantly.</p>
+            <span class="inline-block mt-3 text-xs font-black text-[#e84a86]">Open in Dashboard →</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plumy AI Demo Chat Section -->
+      <section id="plumy" class="bg-white border-2 border-[#2f8a55] rounded-3xl p-6 lg:p-8 shadow-sm">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-5 space-y-3">
+            <span class="bg-[#ffe3ee] text-[#e84a86] font-extrabold text-xs px-3 py-1 rounded-full">MEET PLUMY AI</span>
+            <h2 class="font-serif-heading text-3xl text-[#2f8a55]">Your AI Helper for Captions &amp; Replies</h2>
+            <p class="text-xs sm:text-sm text-[#5f7d68]">
+              Stuck on what to write? Ask Plumy! It helps you craft captions, answer customer questions, and keep your posting schedule on track.
+            </p>
+          </div>
+
+          <div class="md:col-span-7 bg-[#f7fbf4] border border-[#cfe7ca] rounded-2xl p-4 space-y-3">
+            <div id="demoChatBox" class="space-y-2 max-h-56 overflow-y-auto text-xs p-1">
+              <div class="bg-[#e4f4df] text-[#24432f] p-2.5 rounded-2xl max-w-[85%] ml-auto text-right">
+                Write a caption for our new ube cheesecake 🍰
+              </div>
+              <div class="bg-[#ffe3ee] text-[#24432f] p-2.5 rounded-2xl max-w-[85%] font-semibold">
+                Sip, smile, repeat! 🍰 Our Ube Cloud Cheesecake is officially available! Tag a friend who needs a slice today. #LocalBakes #BuyLocal
+              </div>
+            </div>
+
+            <div class="flex gap-2 flex-wrap text-[11px] font-bold text-[#e84a86]" id="demoChips">
+              <button onclick="askDemo('Caption for sale')" class="bg-white border border-[#e84a86] px-2.5 py-1 rounded-full hover:bg-[#ffe3ee]">
+                ✍️ Write Sale Caption
+              </button>
+              <button onclick="askDemo('Delivery fee reply')" class="bg-white border border-[#e84a86] px-2.5 py-1 rounded-full hover:bg-[#ffe3ee]">
+                💬 Delivery Inquiry Reply
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Plans -->
+      <section id="pricing" class="space-y-6">
+        <div class="text-center">
+          <h2 class="font-serif-heading text-3xl sm:text-4xl text-[#2f8a55]">Simple, Affordable Pricing</h2>
+          <p class="text-xs sm:text-sm text-[#5f7d68] mt-1">Monthly plans in Philippine pesos. Upgrade or cancel anytime.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white border border-[#2f8a55] rounded-3xl p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <h3 class="font-serif-heading text-xl text-[#2f8a55]">Student / Solopreneur</h3>
+              <div class="text-3xl font-black text-[#24432f] my-2">₱299 <span class="text-xs font-normal text-[#5f7d68]">/ month</span></div>
+              <ul class="text-xs text-[#5f7d68] space-y-2 my-4">
+                <li>✓ Up to 5 scheduled posts per period</li>
+                <li>✓ Basic content creation calendar</li>
+                <li>✓ Task reminder automation</li>
+                <li>✓ Limited access to AI tools</li>
+              </ul>
+            </div>
+            <button onclick="toggleUserDashboard()" class="btn-green w-full py-2.5 rounded-full font-extrabold text-xs">
+              Choose Student Plan
+            </button>
+          </div>
+
+          <div class="bg-white border-2 border-[#e84a86] rounded-3xl p-6 flex flex-col justify-between shadow-md relative">
+            <span class="absolute -top-3 right-6 bg-[#e84a86] text-white text-[10px] font-black px-3 py-1 rounded-full">MOST POPULAR</span>
+            <div>
+              <h3 class="font-serif-heading text-xl text-[#2f8a55]">Proneur / Growth</h3>
+              <div class="text-3xl font-black text-[#24432f] my-2">₱799 <span class="text-xs font-normal text-[#5f7d68]">/ month</span></div>
+              <ul class="text-xs text-[#5f7d68] space-y-2 my-4">
+                <li>✓ Increased posting capacity &amp; bulk queue</li>
+                <li>✓ Cross-platform publishing</li>
+                <li>✓ Calendar &amp; Scheduling automation</li>
+                <li>✓ Standard Plumy AI access</li>
+              </ul>
+            </div>
+            <button onclick="toggleUserDashboard()" class="btn-pink w-full py-2.5 rounded-full font-extrabold text-xs">
+              Choose Proneur Plan
+            </button>
+          </div>
+
+          <div class="bg-white border border-[#2f8a55] rounded-3xl p-6 flex flex-col justify-between shadow-sm">
+            <div>
+              <h3 class="font-serif-heading text-xl text-[#2f8a55]">Maximopreneur / Business</h3>
+              <div class="text-3xl font-black text-[#24432f] my-2">₱1,499 <span class="text-xs font-normal text-[#5f7d68]">/ month</span></div>
+              <ul class="text-xs text-[#5f7d68] space-y-2 my-4">
+                <li>✓ Unlimited post scheduling</li>
+                <li>✓ Automated email &amp; inquiry responses</li>
+                <li>✓ Smart analytics &amp; workflow alerts</li>
+                <li>✓ Full Plumy AI Support with live chat</li>
+              </ul>
+            </div>
+            <button onclick="toggleUserDashboard()" class="btn-green w-full py-2.5 rounded-full font-extrabold text-xs">
+              Choose Business Plan
+            </button>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3 text-xs font-extrabold text-[#5f7d68] pt-2">
+          <span class="bg-white px-3 py-1 rounded-full border border-[#cfe7ca]">GCash</span>
+          <span class="bg-white px-3 py-1 rounded-full border border-[#cfe7ca]">Maya</span>
+          <span class="bg-white px-3 py-1 rounded-full border border-[#cfe7ca]">InstaPay</span>
+          <span class="bg-white px-3 py-1 rounded-full border border-[#cfe7ca]">PESONet</span>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="space-y-4">
+        <h2 class="font-serif-heading text-3xl text-center text-[#2f8a55]">Frequently Asked Questions</h2>
+        <div class="max-w-2xl mx-auto space-y-2">
+          <details class="bg-white border border-[#cfe7ca] rounded-2xl p-4 text-xs">
+            <summary class="font-extrabold text-[#2f8a55] cursor-pointer">Where do I access the 7 key automations?</summary>
+            <p class="mt-2 text-[#5f7d68]">All 7 automations are directly accessible in your User Dashboard sidebar right after logging in or touching the User Account profile button.</p>
+          </details>
+          <details class="bg-white border border-[#cfe7ca] rounded-2xl p-4 text-xs">
+            <summary class="font-extrabold text-[#2f8a55] cursor-pointer">Do I need a credit card to get started?</summary>
+            <p class="mt-2 text-[#5f7d68]">No! You can pay using GCash, Maya, or Philippine bank transfers.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Sign Up Callout -->
+      <section id="join" class="bg-[#2f8a55] text-white rounded-3xl p-8 text-center space-y-4 shadow-lg">
+        <h2 class="font-serif-heading text-3xl">Ready to Let Your Local Brand Bloom?</h2>
+        <p class="text-xs sm:text-sm text-green-100 max-w-md mx-auto">Get early access, a 7-day free trial, and 10% off your first month.</p>
+        <form onsubmit="event.preventDefault(); alert('Salamat! 💚 You are on the early access list.');" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+          <input type="email" required placeholder="Enter your email address" class="flex-1 px-4 py-2.5 rounded-full text-xs text-[#24432f] focus:outline-none">
+          <button type="submit" class="btn-pink px-6 py-2.5 rounded-full font-extrabold text-xs">Get Access</button>
+        </form>
+      </section>
+
+    </main>
+
+    <footer class="text-center py-6 text-xs text-[#5f7d68] border-t border-[#cfe7ca] mt-12 bg-[#e4f4df]/50">
+      © 2026 Bloomfeed Socials · www.bloomfeedsocials.com · Growing Local Brands One Post at a Time
+    </footer>
+  </div>
+
+
+  <!-- =============================================================== -->
+  <!-- INTERFACE 2: LOGGED-IN USER DASHBOARD INTERFACE                 -->
+  <!-- =============================================================== -->
+  <div id="userDashboardInterface" class="hidden w-full flex-1 dash-grid bg-[#f3f7f2] min-h-[calc(100dvh-65px)]">
+
+    <!-- LEFT SIDEBAR: QUICK ACCESSIBILITY TO ALL 8 KEY AUTOMATIONS -->
+    <aside class="dash-left w-full bg-[#1b3323] text-white p-4 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-[#264630]">
+      <div class="space-y-4">
+        
+        <!-- User Profile Card with Collapse Toggle & Three-Bar Logo -->
+        <div id="profileCard" class="bg-[#264630] border border-[#355d40] rounded-2xl p-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <button onclick="openProfile()" title="Account, theme &amp; business type" class="flex items-center gap-2.5 min-w-0 flex-1 text-left">
+              <span class="w-8 h-8 rounded-full bg-[#e84a86] text-white font-black flex items-center justify-center text-xs shadow shrink-0">SG</span>
+              <span class="min-w-0">
+                <span class="block font-extrabold text-xs text-white truncate">Simon Guzman</span>
+                <span class="block text-[10px] text-green-300 truncate">Store Admin · Active</span>
+              </span>
+            </button>
+            <button id="profileToggle" onclick="toggleProfileCard()" aria-expanded="false" aria-controls="profileMore" title="Show or hide profile details" class="sidebar-link w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-black">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+          <div id="profileMore" class="hidden mt-2.5 pt-2.5 border-t border-[#355d40] space-y-1.5 text-[11px] font-bold">
+            <div class="text-green-300 px-1">Business type: <b id="profileBiz" class="text-white"></b></div>
+            <button onclick="openProfile()" class="sidebar-link w-full flex items-center gap-2 p-2 rounded-xl text-left">🎨 Theme &amp; business type</button>
+            <button onclick="toggleUserDashboard()" class="sidebar-link w-full flex items-center gap-2 p-2 rounded-xl text-left">⎋ Log out / Public view</button>
+          </div>
+        </div>
+
+        <!-- Automations Header with Collapse Toggle & Three-Bar Logo -->
+        <div class="flex items-center justify-between px-2 pt-1">
+          <div class="text-[10px] font-black uppercase text-green-400 tracking-wider flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 inline-block" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span>7 Key Automations</span>
+          </div>
+          <button id="automationsToggleBtn" onclick="toggleAutomationsSection()" aria-expanded="true" aria-controls="automationsListContainer" title="Hide/Show Automations" class="sidebar-link w-6 h-6 rounded-full flex items-center justify-center text-xs font-black">▾</button>
+        </div>
+
+        <!-- 7 tools container -->
+        <nav id="automationsListContainer" class="space-y-1.5 text-xs font-extrabold transition-all">
+          <div id="item-email" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('email')" id="nav-email" class="sidebar-link active w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">✉️ 1. Email</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-email" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-email" class="text-[9px] font-black opacity-70">ON</span><button id="sw-email" type="button" role="switch" aria-checked="true" aria-label="Turn Email on or off" onclick="setSys('email')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-inquiry" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('inquiry')" id="nav-inquiry" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">💬 2. Inquiry</span><span id="sidebarInquiryBadge" class="text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded shrink-0">2 New</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-inquiry" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-inquiry" class="text-[9px] font-black opacity-70">ON</span><button id="sw-inquiry" type="button" role="switch" aria-checked="true" aria-label="Turn Inquiry on or off" onclick="setSys('inquiry')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-calendar" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('calendar')" id="nav-calendar" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">🗓️ 3. Calendar</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-calendar" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-calendar" class="text-[9px] font-black opacity-70">ON</span><button id="sw-calendar" type="button" role="switch" aria-checked="true" aria-label="Turn Calendar on or off" onclick="setSys('calendar')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-reminder" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('reminder')" id="nav-reminder" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">🔔 4. Task Reminders</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-reminder" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-reminder" class="text-[9px] font-black opacity-70">ON</span><button id="sw-reminder" type="button" role="switch" aria-checked="true" aria-label="Turn Task Reminders on or off" onclick="setSys('reminder')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-posting" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('posting')" id="nav-posting" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">📲 5. Posting Reminders</span><span class="text-[9px] bg-[#e84a86] text-white px-1.5 py-0.5 rounded shrink-0">1 Ready</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-posting" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-posting" class="text-[9px] font-black opacity-70">ON</span><button id="sw-posting" type="button" role="switch" aria-checked="true" aria-label="Turn Posting Reminders on or off" onclick="setSys('posting')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-schedreminder" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('schedreminder')" id="nav-schedreminder" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left">
+              <span class="truncate">📝 6. Schedule Reminders</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-schedreminder" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-schedreminder" class="text-[9px] font-black opacity-70">ON</span><button id="sw-schedreminder" type="button" role="switch" aria-checked="true" aria-label="Turn Schedule Reminders on or off" onclick="setSys('schedreminder')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+          <div id="item-plumy" class="auto-item rounded-xl">
+            <button onclick="triggerAutomation('plumy')" id="nav-plumy" class="sidebar-link w-full flex items-center justify-between gap-2 p-2.5 rounded-xl text-left text-pink-300">
+              <span class="truncate">🌸 7. Plumy AI Support</span>
+            </button>
+            <div class="flex items-center justify-between gap-2 px-2.5 pt-1 pb-0.5">
+              <span id="st-plumy" class="st-pill on">● Active</span>
+              <span class="flex items-center gap-1.5"><span id="swl-plumy" class="text-[9px] font-black opacity-70">ON</span><button id="sw-plumy" type="button" role="switch" aria-checked="true" aria-label="Turn Plumy AI Support on or off" onclick="setSys('plumy')" class="switch"><span class="knob"></span></button></span>
+            </div>
+          </div>
+        </nav>
+
+        <!-- CONNECTED CHANNELS: INSTAGRAM / FACEBOOK / TIKTOK / GMAIL -->
+        <div class="text-[10px] font-black uppercase text-green-400 px-2 tracking-wider pt-2">
+          Connected Channels
+        </div>
+        <div class="space-y-1 text-xs font-extrabold">
+          <button onclick="openPost('instagram')" class="sidebar-link w-full flex items-center justify-between p-2.5 rounded-xl text-left">
+            <span class="flex items-center gap-2">📸 Instagram</span>
+            <span id="badge-instagram" class="text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded">Connect</span>
+          </button>
+          <button onclick="openPost('facebook')" class="sidebar-link w-full flex items-center justify-between p-2.5 rounded-xl text-left">
+            <span class="flex items-center gap-2">📘 Facebook</span>
+            <span id="badge-facebook" class="text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded">Connect</span>
+          </button>
+          <button onclick="openPost('tiktok')" class="sidebar-link w-full flex items-center justify-between p-2.5 rounded-xl text-left">
+            <span class="flex items-center gap-2">🎵 TikTok</span>
+            <span id="badge-tiktok" class="text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded">Connect</span>
+          </button>
+          <button onclick="openMail()" class="sidebar-link w-full flex items-center justify-between p-2.5 rounded-xl text-left">
+            <span class="flex items-center gap-2">📧 Gmail</span>
+            <span id="badge-gmail" class="text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded">Connect</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-[#264630] text-[11px] text-green-300 flex items-center justify-between">
+        <span>Workspace Status:</span>
+        <button onclick="toast('🟢 Workspace online · all channels synced')" class="text-green-400 font-bold flex items-center gap-1 hover:underline">● Online</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CENTER WORKSPACE -->
+    <section class="dash-center min-w-0 p-3 sm:p-4 lg:p-6 space-y-6">
+      
+      <!-- Workspace Banner -->
+      <div class="relative flex flex-wrap items-center justify-between gap-4 bg-white border border-[#cfe7ca] p-4 rounded-2xl shadow-sm">
+        <div>
+          <h1 class="font-serif-heading text-2xl lg:text-3xl text-[#2f8a55]">
+            Business Workspace &amp; Central Schedule
+          </h1>
+          <p class="text-xs text-[#5f7d68]">
+            Real-time multi-channel overview · October 2026
+          </p>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap justify-end">
+          <button id="weatherBtn" onclick="toggleWeather()" title="Weather forecast" class="flex items-center gap-2 bg-[#f7fbf4] border border-[#cfe7ca] hover:border-[#e84a86] rounded-2xl px-3 py-1.5 text-left">
+            <span id="wxIcon" class="text-2xl">⛅</span>
+            <span class="leading-tight"><b id="wxTemp" class="text-sm text-[#24432f]">--°C</b> <span id="wxCond" class="text-[11px] text-[#5f7d68]">Loading…</span><br><span id="wxCity" class="text-[10px] text-[#5f7d68] font-bold">Parañaque</span></span>
+          </button>
+          <button id="statusBadge" onclick="openStatus()" class="text-xs font-extrabold text-[#e84a86] bg-[#ffe3ee] px-3 py-1.5 rounded-full hover:shadow">● All Automations Active</button>
+        </div>
+        <div id="weatherPanel" class="hidden absolute right-3 top-full mt-2 w-[22rem] max-w-[92vw] z-30 bg-white border-2 border-[#2f8a55] rounded-3xl p-4 shadow-2xl text-xs space-y-3"></div>
+      </div>
+
+      <!-- PLUMY SMART PLAN: STUDENT / ENTREPRENEUR / MSME -->
+      <div class="bg-white border border-[#cfe7ca] rounded-2xl p-4 shadow-sm space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="font-black text-[#2f8a55] text-sm">🌸 Plumy Smart Plan <span class="text-[#5f7d68] font-semibold text-xs">· tap to change</span></div>
+          <div id="personaBar" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <p id="personaIntro" class="text-xs text-[#5f7d68]"></p>
+        <div id="personaActions" class="grid sm:grid-cols-3 gap-2"></div>
+      </div>
+
+      <!-- MIDDLE TOP: CENTRALIZED CALENDAR + ALONGSIDE EMAIL & INQUIRIES INBOX -->
+      <div class="grid 2xl:grid-cols-12 gap-5">
+        
+        <!-- CENTRAL CALENDAR BOX (MIDDLE TOP) -->
+        <div class="2xl:col-span-7 bg-white border-2 border-[#2f8a55] rounded-3xl p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-[#cfe7ca] mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🗓️</span>
+                <h2 class="font-serif-heading text-xl text-[#2f8a55]">Central Content Calendar</h2>
+              </div>
+              <span class="text-xs font-extrabold text-[#5f7d68]">October 2026</span>
+            </div>
+
+            <!-- Calendar Days Header -->
+            <div class="grid grid-cols-7 text-center text-[11px] font-black text-[#5f7d68] mb-2">
+              <div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div>
+            </div>
+
+            <!-- Mini Calendar Grid -->
+            <div class="grid grid-cols-7 gap-1 text-center text-xs">
+              <div class="p-2 text-gray-300">28</div><div class="p-2 text-gray-300">29</div><div class="p-2 text-gray-300">30</div>
+              <div data-day="1" onclick="openDay(1)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">1</div>
+              <div data-day="2" onclick="openDay(2)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">2</div>
+              <div data-day="3" onclick="openDay(3)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">3</div>
+              <div data-day="4" onclick="openDay(4)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">4</div>
+
+              <div data-day="5" onclick="openDay(5)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">5</div>
+              <div data-day="6" onclick="openDay(6)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">6</div>
+              <div data-day="7" onclick="openDay(7)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">7</div>
+              <div data-day="8" onclick="openDay(8)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">8</div>
+              <div data-day="9" onclick="openDay(9)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">9</div>
+              <div data-day="10" onclick="openDay(10)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">10</div>
+              <div data-day="11" onclick="openDay(11)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">11</div>
+
+              <!-- Current Active Launch Period -->
+              <div data-day="12" onclick="openDay(12)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-black text-white bg-[#2f8a55] rounded-lg shadow-sm">12</div>
+              <div data-day="13" onclick="openDay(13)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-black text-white bg-[#e84a86] rounded-lg shadow-sm">13</div>
+              <div data-day="14" onclick="openDay(14)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-black text-white bg-[#2f8a55] rounded-lg shadow-sm">14</div>
+              <div data-day="15" onclick="openDay(15)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">15</div>
+              <div data-day="16" onclick="openDay(16)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">16</div>
+              <div data-day="17" onclick="openDay(17)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">17</div>
+              <div data-day="18" onclick="openDay(18)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] text-red-500 font-extrabold bg-pink-50 rounded-lg">18</div>
+
+              <div data-day="19" onclick="openDay(19)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">19</div>
+              <div data-day="20" onclick="openDay(20)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">20</div>
+              <div data-day="21" onclick="openDay(21)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">21</div>
+              <div data-day="22" onclick="openDay(22)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">22</div>
+              <div data-day="23" onclick="openDay(23)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">23</div>
+              <div data-day="24" onclick="openDay(24)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">24</div>
+              <div data-day="25" onclick="openDay(25)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">25</div>
+
+              <div data-day="26" onclick="openDay(26)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">26</div>
+              <div data-day="27" onclick="openDay(27)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">27</div>
+              <div data-day="28" onclick="openDay(28)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">28</div>
+              <div data-day="29" onclick="openDay(29)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">29</div>
+              <div data-day="30" onclick="openDay(30)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">30</div>
+              <div data-day="31" onclick="openDay(31)" role="button" tabindex="0" title="Set name, time &amp; location" class="cal-day p-2 font-bold text-[#24432f] bg-green-50 rounded-lg">31</div>
+              <div class="p-2 text-gray-300">1</div>
+            </div>
+          </div>
+
+          <p class="text-[10px] text-[#5f7d68] mt-3 text-center">👆 Tap any date to set <b>name, time &amp; location</b> and turn on its <b>automated reminder</b>.</p>
+
+          <!-- Calendar Active Items -->
+          <div class="mt-4 pt-3 border-t border-[#cfe7ca] flex items-center justify-between text-xs">
+            <button onclick="openToday()" class="font-extrabold text-[#2f8a55] hover:underline">Scheduled Today: 3 Posts ›</button>
+            <button onclick="triggerAutomation('calendar')" class="text-[#e84a86] font-black hover:underline">
+              View Calendar Details →
+            </button>
+          </div>
+        </div>
+
+        <!-- EMAIL & CUSTOMER INQUIRIES INBOX (ALONGSIDE CALENDAR) -->
+        <div class="2xl:col-span-5 bg-white border-2 border-[#2f8a55] rounded-3xl p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-[#cfe7ca] mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">✉️</span>
+                <h2 class="font-serif-heading text-xl text-[#2f8a55]">Email &amp; Inquiries</h2>
+              </div>
+              <span id="autoRespBadge" class="text-[10px] bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded-full">
+                Auto-Response On
+              </span>
+            </div>
+
+            <!-- Inquiries Message Feed -->
+            <div class="space-y-2.5 text-xs">
+              
+              <!-- Customer Item 1 -->
+              <div class="p-3 bg-pink-50/60 border border-pink-200 rounded-2xl space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="font-black text-[#2f8a55]">Maria Clara (IG DM)</span>
+                  <span class="text-[10px] text-gray-400">10m ago</span>
+                </div>
+                <p class="text-[#24432f] font-semibold">“Magkano po delivery to Makati?”</p>
+                <div class="flex items-center gap-2 pt-1">
+                  <span id="status-maria" class="text-[10px] bg-green-200 text-green-900 font-bold px-2 py-0.2 rounded-full">Plumy Auto-Replied ₱49</span>
+                  <button id="btn-maria" onclick="openReply('maria')" class="btn-pink text-[10px] px-3 py-1 rounded-full font-extrabold ml-auto">↩ Reply</button>
+                </div>
+              </div>
+
+              <!-- Customer Item 2 -->
+              <div class="p-3 bg-pink-50/60 border border-pink-200 rounded-2xl space-y-1">
+                <div class="flex justify-between items-center">
+                  <span class="font-black text-[#2f8a55]">Chef Juan (Email)</span>
+                  <span class="text-[10px] text-gray-400">25m ago</span>
+                </div>
+                <p class="text-[#24432f] font-semibold">“Is Ube Cheesecake available for bulk order?”</p>
+                <div class="flex items-center gap-2 pt-1">
+                  <span id="status-chef" class="text-[10px] bg-amber-200 text-amber-900 font-bold px-2 py-0.2 rounded-full">Pending Confirmation</span>
+                  <button id="btn-chef" onclick="openReply('chef')" class="btn-pink text-[10px] px-3 py-1 rounded-full font-extrabold ml-auto">↩ Reply</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2 border-t border-[#cfe7ca] text-right">
+            <button onclick="triggerAutomation('inquiry')" class="text-xs text-[#2f8a55] font-black hover:underline">
+              Open Full Inbox &amp; Auto-Rules →
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MIDDLE BOTTOM: RECTANGLE BOX CARDS (SEASONAL PROJECT + TIME CLOCK IN TRACKER) -->
+      <div class="grid 2xl:grid-cols-12 gap-5">
+        
+        <!-- RECTANGLE CARD 1: INCOMING SEASONAL PROJECT -->
+        <div class="2xl:col-span-7 bg-white border-2 border-[#2f8a55] rounded-3xl p-5 shadow-sm relative overflow-hidden flex flex-col justify-between">
+          <!-- Upper Right Badge for Incoming Seasonal Project -->
+          <button onclick="openBoard('halloween')" class="absolute top-4 right-4 bg-[#ffe3ee] border border-[#e84a86] text-[#e84a86] font-black text-xs px-3 py-1 rounded-full shadow-sm hover:shadow-md">
+            🚀 Incoming Seasonal Project ›
+          </button>
+
+          <div>
+            <div class="text-xs font-black text-[#5f7d68] uppercase tracking-wider mb-1">
+              Active Project Campaign
+            </div>
+            <h3 onclick="openBoard('payday')" class="font-serif-heading text-2xl text-[#2f8a55] mb-2 cursor-pointer hover:underline">
+              Payday Special Promo Launch
+            </h3>
+            
+            <p class="text-xs text-[#5f7d68] max-w-md">
+              Cross-platform promotional roll-out with email discount codes and social media video teasers.
+            </p>
+
+            <!-- Assigned Team Users -->
+            <div class="mt-4 flex items-center gap-3 bg-[#f7fbf4] p-2.5 rounded-2xl border border-[#cfe7ca]">
+              <div onclick="openTeam()" role="button" tabindex="0" title="View team" class="flex -space-x-2 cursor-pointer">
+                <div class="w-7 h-7 rounded-full bg-[#e84a86] text-white font-black flex items-center justify-center text-[10px] border-2 border-white">SG</div>
+                <div class="w-7 h-7 rounded-full bg-[#2f8a55] text-white font-black flex items-center justify-center text-[10px] border-2 border-white">MT</div>
+                <div class="w-7 h-7 rounded-full bg-amber-500 text-white font-black flex items-center justify-center text-[10px] border-2 border-white">PA</div>
+              </div>
+              <div class="text-xs">
+                <span class="font-black text-[#2f8a55]">Simon Guzman &amp; Marketing Team</span>
+                <div class="text-[10px] text-[#5f7d68]">3 Members Assigned · 85% Completed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-center justify-between text-xs pt-2 border-t border-[#cfe7ca]">
+            <span class="text-[#5f7d68] font-bold">Target Release: October 18, 2026</span>
+            <div class="flex items-center gap-1.5">
+              <button onclick="openBoard('halloween')" title="Halloween" class="text-base hover:scale-110 transition-transform">🎃</button>
+              <button onclick="openBoard('christmas')" title="Christmas" class="text-base hover:scale-110 transition-transform">🎄</button>
+              <button onclick="openBoard('nye')" title="New Year's Eve" class="text-base hover:scale-110 transition-transform">🎆</button>
+              <button onclick="openBoard('payday')" class="btn-green text-[11px] px-3 py-1.5 rounded-xl font-bold">Project Board</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECTANGLE CARD 2: TIME CLOCK IN / SHIFT TRACKER -->
+        <div class="2xl:col-span-5 bg-white border-2 border-[#2f8a55] rounded-3xl p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-[#cfe7ca] mb-3">
+              <span class="font-black text-xs text-[#2f8a55] uppercase tracking-wider">
+                ⏰ Shift Time Clock In
+              </span>
+              <span id="shiftStatusBadge" class="bg-green-100 text-green-800 text-[10px] font-black px-2 py-0.5 rounded-full">
+                Active Shift
+              </span>
+            </div>
+
+            <div class="text-center py-2 space-y-1">
+              <div class="text-[10px] text-[#5f7d68] font-bold">CURRENT WORKSPACE TIME</div>
+              <div id="liveClockDisplay" class="font-mono text-3xl font-black text-[#24432f]">
+                08:30:00 AM
+              </div>
+              <div id="shiftTimerDisplay" class="text-xs text-[#e84a86] font-extrabold">
+                Clocked In at 08:00 AM (00:30:00 elapsed)
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-[#cfe7ca] flex gap-2">
+            <button onclick="clockIn()" id="btnClockIn" class="btn-green flex-1 py-2 rounded-xl text-xs font-black">
+              Start Shift
+            </button>
+            <button onclick="clockOut()" id="btnClockOut" class="btn-pink flex-1 py-2 rounded-xl text-xs font-black">
+              Clock Out
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- RIGHT SIDEBAR COLUMN: PLUMY POSTING DEADLINES & NEED TO REPLY REMINDERS -->
+    <aside class="dash-right w-full bg-white border-t xl:border-t-0 xl:border-l border-[#cfe7ca] p-4 lg:p-5 grid gap-6 content-start">
+      
+      <!-- TOP RIGHT SECTION: PLUMY AI POSTING DEADLINES -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-[#cfe7ca]">
+          <h3 class="font-serif-heading text-lg text-[#2f8a55] flex items-center gap-1.5">
+            <span>🌸</span> Plumy Posting Deadlines
+          </h3>
+          <span class="text-[10px] bg-pink-100 text-[#e84a86] font-black px-2 py-0.5 rounded-full">AI Schedule</span>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- Deadline Item 1 -->
+          <div class="p-3 bg-[#f7fbf4] border-l-4 border-[#e84a86] rounded-r-2xl border border-[#cfe7ca] space-y-1">
+            <div class="flex justify-between font-black text-[#2f8a55]">
+              <span>FB: Afternoon Coffee Reel</span>
+              <span class="text-[#e84a86]">TODAY 11:30 AM</span>
+            </div>
+            <p class="text-[#5f7d68] text-[11px]">Recommended peak engagement window set by Plumy AI.</p>
+            <button onclick="openPost('facebook',{caption:'Afternoon coffee break ☕💚 Fresh brews are ready — drop by or order for delivery! #BloomfeedPH #SupportLocal'})" class="btn-pink text-[10px] px-2.5 py-1 rounded-lg font-bold mt-1">
+              Review &amp; Publish
+            </button>
+          </div>
+
+          <!-- Deadline Item 2 -->
+          <div onclick="openPost('instagram',{caption:'Real customers, real love 💚 Thank you for trusting our little shop! #BloomfeedPH #CustomerReview'})" role="button" tabindex="0" class="cursor-pointer hover:shadow-md p-3 bg-[#f7fbf4] border-l-4 border-[#2f8a55] rounded-r-2xl border border-[#cfe7ca] space-y-1">
+            <div class="flex justify-between font-black text-[#2f8a55]">
+              <span>IG: Customer Review Story</span>
+              <span class="text-[#2f8a55]">TODAY 06:00 PM</span>
+            </div>
+            <p class="text-[#5f7d68] text-[11px]">Auto-scheduled queue ready for release.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLUMY AI CHAT (ChatGPT-style) -->
+      <div id="plumyChat" class="rounded-3xl border-2 border-[#2f8a55] bg-white overflow-hidden flex flex-col">
+        <div class="flex items-center justify-between gap-2 px-3 py-2.5 bg-[#e4f4df] border-b border-[#cfe7ca]">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="chat-avatar shrink-0">🌸</span>
+            <div class="leading-tight min-w-0">
+              <div class="font-black text-sm text-[#2f8a55] truncate">Plumy AI</div>
+              <div id="chatState" class="text-[10px] text-[#5f7d68] font-bold truncate">● Online · demo mode</div>
+            </div>
+          </div>
+          <button onclick="chatClear()" title="Start a new chat" class="text-[11px] font-extrabold text-[#e84a86] hover:underline shrink-0">＋ New chat</button>
+        </div>
+        <div id="chatLog" class="px-3 py-3 space-y-3 text-xs overflow-y-auto" style="max-height:18rem;min-height:9rem" aria-live="polite"></div>
+        <div id="chatChips" class="px-3 pb-2 flex flex-wrap gap-1.5"></div>
+        <div class="p-2.5 border-t border-[#cfe7ca] flex items-end gap-2 bg-[#f7fbf4]">
+          <textarea id="chatInput" rows="1" placeholder="Message Plumy…" class="field flex-1 resize-none" onkeydown="chatKey(event)" oninput="chatGrow(this)" aria-label="Message Plumy"></textarea>
+          <button onclick="chatSend()" id="chatSendBtn" class="btn-pink w-9 h-9 rounded-full font-black shrink-0" aria-label="Send message">➤</button>
+        </div>
+      </div>
+
+      <!-- BOTTOM RIGHT SECTION: NEED TO REPLY REMINDERS FOR CUSTOMERS -->
+      <div class="space-y-3 pt-4 border-t border-[#cfe7ca]">
+        <div class="flex items-center justify-between pb-2 border-b border-[#cfe7ca]">
+          <h3 class="font-serif-heading text-lg text-[#2f8a55] flex items-center gap-1.5">
+            <span>⚡</span> "Need to Reply" Reminders
+          </h3>
+          <span class="text-[10px] bg-red-100 text-red-700 font-black px-2 py-0.5 rounded-full">Urgent</span>
+        </div>
+
+        <div class="space-y-2.5 text-xs">
+          <!-- Reply Item 1 -->
+          <div class="p-3 bg-red-50/80 border border-red-200 rounded-2xl space-y-1">
+            <div class="flex justify-between items-center font-black text-red-800">
+              <span>Order Cancellation Inquiry</span>
+              <span id="status-refund" class="text-[10px] bg-red-200 px-1.5 py-0.2 rounded text-red-900">Overdue</span>
+            </div>
+            <p class="text-[#24432f] text-[11px]">Customer asking about GCash refund process.</p>
+            <div class="pt-1 flex gap-2">
+              <button id="btn-refund" onclick="openReply('refund',true)" class="btn-pink text-[10px] px-2.5 py-1 rounded-lg font-extrabold flex-1">↩ Reply</button>
+            </div>
+          </div>
+
+          <!-- Reply Item 2 -->
+          <div class="p-3 bg-amber-50/80 border border-amber-200 rounded-2xl space-y-1">
+            <div class="flex justify-between items-center font-black text-amber-900">
+              <span>Wholesale Pricing Sheet</span>
+              <span id="status-wholesale" class="text-[10px] text-amber-800">Pending</span>
+            </div>
+            <p class="text-[#24432f] text-[11px]">Send updated PDF catalog to reseller.</p>
+            <div class="pt-1">
+              <button id="btn-wholesale" onclick="openReply('wholesale',true)" class="btn-green text-[10px] px-2.5 py-1 rounded-lg font-extrabold w-full">↩ Reply &amp; Send Catalog</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- =============================================================== -->
+  <!-- MODAL FOR DETAILED AUTOMATION VIEWS                             -->
+  <!-- =============================================================== -->
+  <div id="automationModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full max-h-[90dvh] overflow-y-auto p-6 space-y-4 shadow-2xl mod-sheet border-2 border-[#2f8a55]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div id="modalIconTitle" class="flex items-center gap-2 font-serif-heading text-2xl text-[#2f8a55]">
+          <!-- Dynamic Content -->
+        </div>
+        <button onclick="closeModal()" class="text-gray-400 hover:text-black font-black text-xl">✕</button>
+      </div>
+
+      <div id="modalBody" class="text-xs text-[#5f7d68] space-y-2">
+        <!-- Dynamic Content -->
+      </div>
+
+      <div id="modalAccessBadge" class="bg-[#ffe3ee] text-[#e84a86] font-black text-xs p-2.5 rounded-2xl border border-[#e84a86]">
+        <!-- Location Access Text -->
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button onclick="closeModal()" class="btn-green text-xs px-5 py-2 rounded-full font-bold">
+          Got it
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- =============================================================== -->
+  <!-- MODAL: CALENDAR DATE → SET NAME, TIME & LOCATION + REMINDER      -->
+  <!-- =============================================================== -->
+  <div id="eventModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full max-h-[92dvh] overflow-y-auto p-6 space-y-4 shadow-2xl mod-sheet border-2 border-[#e84a86]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div class="font-serif-heading text-2xl text-[#2f8a55]">🗓️ <span id="evDateTitle">October 1, 2026</span></div>
+        <button onclick="closeEvent()" class="text-gray-400 hover:text-black font-black text-xl" aria-label="Close">✕</button>
+      </div>
+
+      <div id="evExisting" class="space-y-2"></div>
+
+      <div class="space-y-3 text-xs">
+        <div class="font-black text-[#2f8a55] uppercase tracking-wide text-[10px]">Set name, time &amp; location</div>
+        <label class="block"><span class="font-extrabold">📌 Name</span>
+          <input id="evName" class="field mt-1" placeholder="e.g. Payday Sale Launch"></label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="font-extrabold">⏰ Time</span>
+            <input id="evTime" type="time" value="09:00" class="field mt-1" oninput="updateReminderPreview()"></label>
+          <label class="block"><span class="font-extrabold">📍 Location</span>
+            <input id="evLoc" class="field mt-1" placeholder="e.g. Shop, Parañaque"></label>
+        </div>
+
+        <div class="bg-[#ffe8f1] border border-[#e84a86]/40 rounded-2xl p-3 space-y-2">
+          <div class="font-black text-[#e84a86]">🔔 Automated Reminder</div>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="block"><span class="font-extrabold">Remind me</span>
+              <select id="evLead" class="field mt-1" onchange="updateReminderPreview()">
+                <option value="0">At event time</option>
+                <option value="15">15 minutes before</option>
+                <option value="60" selected>1 hour before</option>
+                <option value="1440">1 day before</option>
+              </select></label>
+            <div>
+              <span class="font-extrabold">Send via</span>
+              <div class="mt-1.5 space-y-1">
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="chApp" checked onchange="updateReminderPreview()"> In-app</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="chEmail" checked onchange="updateReminderPreview()"> Email</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" id="chPush" onchange="updateReminderPreview()"> Mobile push</label>
+              </div>
+            </div>
+          </div>
+          <div id="evPreview" class="bg-white rounded-xl p-2.5 text-[11px] text-[#24432f] font-semibold border border-[#cfe7ca]"></div>
+        </div>
+      </div>
+
+      <div id="evSaved" class="hidden bg-green-50 border border-[#2f8a55] text-[#1f633c] rounded-2xl p-3 text-xs font-bold"></div>
+
+      <div class="flex justify-end gap-2 pt-1">
+        <button onclick="closeEvent()" class="text-xs px-4 py-2 rounded-full font-bold border border-[#cfe7ca] text-[#5f7d68]">Cancel</button>
+        <button onclick="saveEvent()" class="btn-pink text-xs px-5 py-2 rounded-full font-extrabold">Save &amp; Activate Reminder</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-[80] hidden max-w-sm w-[92%] bg-[#1b3323] text-white text-xs font-bold rounded-2xl px-4 py-3 shadow-2xl border border-[#e84a86]"></div>
+
+  <!-- =============================================================== -->
+  <!-- MODAL: SOCIAL POST COMPOSER (INSTAGRAM / FACEBOOK / TIKTOK)      -->
+  <!-- =============================================================== -->
+  <div id="postModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92dvh] overflow-y-auto p-6 space-y-4 shadow-2xl mod-sheet border-2 border-[#2f8a55]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div id="postTitle" class="font-serif-heading text-2xl text-[#2f8a55]"></div>
+        <button onclick="closePost()" class="text-gray-400 hover:text-black font-black text-xl" aria-label="Close">✕</button>
+      </div>
+
+      <div class="bg-[#ffe8f1] border border-[#e84a86]/40 text-[#c2406f] rounded-2xl p-3 text-xs font-extrabold">
+        🔔 Open to post for <u>tomorrow</u>, or for <u>today</u> set a given time.
+      </div>
+
+      <div id="postConnect" class="flex items-center justify-between gap-2 bg-[#f7fbf4] border border-[#cfe7ca] rounded-2xl p-3 text-xs"></div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold">✍️ Caption</span>
+            <button onclick="plumyCaption()" class="text-[#e84a86] font-black hover:underline">🌸 Plumy, suggest a caption</button>
+          </div>
+          <textarea id="postCaption" rows="4" maxlength="2200" class="field mt-1" placeholder="Write your caption… #BloomfeedPH" oninput="document.getElementById('capCount').textContent=this.value.length"></textarea>
+          <div class="text-right text-[10px] text-[#5f7d68]"><span id="capCount">0</span>/2200</div>
+        </div>
+
+        <div>
+          <span class="font-extrabold">🖼️ Attach image</span>
+          <label class="mt-1 flex flex-col items-center justify-center gap-1 border-2 border-dashed border-[#cfe7ca] rounded-2xl p-3 cursor-pointer hover:border-[#e84a86] text-[#5f7d68] text-center">
+            <input id="postImg" type="file" accept="image/*" class="hidden" onchange="previewImg(this)">
+            <img id="imgPreview" class="hidden max-h-40 rounded-xl" alt="Attached image preview">
+            <span id="imgHint">＋ Tap to upload a photo from your device</span>
+          </label>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <span class="font-extrabold">📅 When</span>
+            <div class="flex flex-wrap gap-1 mt-1">
+              <button id="dayToday" onclick="setPostDay(25)" class="hub-tab flex-1 px-2 py-2 rounded-full font-extrabold on">Today</button>
+              <button id="dayTomorrow" onclick="setPostDay(26)" class="hub-tab flex-1 px-2 py-2 rounded-full font-extrabold bg-[#e4f4df] text-[#2f8a55]">Tomorrow</button>
+              <button id="daySeason" onclick="setPostDay('season')" class="hidden hub-tab flex-1 px-2 py-2 rounded-full font-extrabold bg-[#e4f4df] text-[#2f8a55]"></button>
+            </div>
+          </div>
+          <label class="block"><span class="font-extrabold">⏰ Time</span>
+            <input id="postTime" type="time" value="18:00" class="field mt-1" oninput="updatePostPreview()"></label>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="font-extrabold">Posting mode</span>
+            <select id="postMode" class="field mt-1" onchange="updatePostPreview()">
+              <option value="auto">Auto-post at that time</option>
+              <option value="remind">Remind me to post</option>
+            </select></label>
+          <label class="block"><span class="font-extrabold">🔔 Reminder</span>
+            <select id="postLead" class="field mt-1" onchange="updatePostPreview()">
+              <option value="0">At posting time</option>
+              <option value="15">15 minutes before</option>
+              <option value="60" selected>1 hour before</option>
+              <option value="1440">1 day before</option>
+            </select></label>
+        </div>
+
+        <div id="postPreview" class="bg-[#f7fbf4] rounded-xl p-2.5 text-[11px] text-[#24432f] font-semibold border border-[#cfe7ca]"></div>
+      </div>
+
+      <div id="postSaved" class="hidden bg-green-50 border border-[#2f8a55] text-[#1f633c] rounded-2xl p-3 text-xs font-bold"></div>
+
+      <div class="flex flex-wrap justify-end gap-2 pt-1">
+        <button onclick="openApp()" class="text-xs px-4 py-2 rounded-full font-bold border border-[#cfe7ca] text-[#2f8a55]">Open app ↗</button>
+        <button onclick="savePost()" id="postSaveBtn" class="btn-pink text-xs px-5 py-2 rounded-full font-extrabold">Schedule Post</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- GENERIC INFO MODAL -->
+  <div id="infoModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full max-h-[90dvh] overflow-y-auto p-6 space-y-3 shadow-2xl mod-sheet border-2 border-[#2f8a55]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div id="infoTitle" class="font-serif-heading text-2xl text-[#2f8a55]"></div>
+        <button onclick="closeInfo()" class="text-gray-400 hover:text-black font-black text-xl" aria-label="Close">✕</button>
+      </div>
+      <div id="infoBody" class="text-xs text-[#24432f] space-y-2"></div>
+    </div>
+  </div>
+
+  <!-- REPLY MODAL (EMAIL & INQUIRIES) -->
+  <div id="replyModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full max-h-[92dvh] overflow-y-auto p-6 space-y-3 shadow-2xl mod-sheet border-2 border-[#e84a86]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div id="replyTitle" class="font-serif-heading text-2xl text-[#2f8a55]"></div>
+        <button onclick="closeReply()" class="text-gray-400 hover:text-black font-black text-xl" aria-label="Close">✕</button>
+      </div>
+      <div id="replyMsg" class="bg-[#f7fbf4] border border-[#cfe7ca] rounded-2xl p-3 text-xs font-semibold text-[#24432f]"></div>
+      <div id="replyChips" class="flex flex-wrap gap-1.5"></div>
+      <textarea id="replyText" rows="5" class="field" placeholder="Type your reply here…"></textarea>
+      <label class="flex items-center gap-1.5 text-xs"><input type="checkbox" id="replyAttach"> 📎 Attach price list / catalog</label>
+      <div class="flex justify-between gap-2 pt-1">
+        <button onclick="plumyReply()" class="text-xs px-4 py-2 rounded-full font-bold border border-[#e84a86] text-[#e84a86]">🌸 Plumy draft</button>
+        <button onclick="sendReply()" class="btn-pink text-xs px-5 py-2 rounded-full font-extrabold">Send Reply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT BOARD MODAL (SEASONS) -->
+  <div id="boardModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div id="boardCard" class="board-card rounded-3xl max-w-2xl w-full max-h-[92dvh] overflow-y-auto p-5 sm:p-6 shadow-2xl mod-sheet" data-season="halloween">
+      <div class="flex items-start justify-between gap-2">
+        <div class="font-serif-heading text-2xl">📋 Project Board</div>
+        <button onclick="closeBoard()" class="font-black text-xl opacity-70 hover:opacity-100" aria-label="Close">✕</button>
+      </div>
+      <div id="boardBody" class="space-y-4 mt-3"></div>
+    </div>
+  </div>
+
+
+  <!-- =============================================================== -->
+  <!-- MODAL: GMAIL COMPOSE (send now / schedule + calendar reminder)   -->
+  <!-- =============================================================== -->
+  <div id="mailModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] hidden flex items-end sm:items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92dvh] overflow-y-auto p-6 space-y-4 shadow-2xl mod-sheet border-2 border-[#2f8a55]">
+      <div class="flex items-center justify-between border-b border-[#cfe7ca] pb-3">
+        <div class="font-serif-heading text-2xl text-[#2f8a55]">📧 Email via Gmail</div>
+        <button onclick="closeMail()" class="text-gray-400 hover:text-black font-black text-xl" aria-label="Close">✕</button>
+      </div>
+
+      <div class="bg-[#ffe8f1] border border-[#e84a86]/40 text-[#c2406f] rounded-2xl p-3 text-xs font-extrabold">
+        🔔 Send today at a set time, or schedule it for tomorrow.
+      </div>
+
+      <div id="mailConnect" class="flex items-center justify-between gap-2 bg-[#f7fbf4] border border-[#cfe7ca] rounded-2xl p-3 text-xs"></div>
+
+      <div class="space-y-3 text-xs">
+        <div id="mailChips" class="flex flex-wrap gap-1.5"></div>
+        <label class="block"><span class="font-extrabold">To</span>
+          <input id="mailTo" type="email" inputmode="email" class="field mt-1" placeholder="customer@email.com"></label>
+        <label class="block"><span class="font-extrabold">Subject</span>
+          <input id="mailSubject" class="field mt-1" placeholder="e.g. Your order is confirmed"></label>
+        <div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-extrabold">✍️ Message</span>
+            <button onclick="mailPlumy()" class="text-[#e84a86] font-black hover:underline">🌸 Plumy, draft it</button>
+          </div>
+          <textarea id="mailBody" rows="5" class="field mt-1" placeholder="Write your email…"></textarea>
+        </div>
+        <label class="flex items-center gap-2 border-2 border-dashed border-[#cfe7ca] rounded-2xl p-2.5 cursor-pointer text-[#5f7d68]">
+          <input id="mailFile" type="file" class="hidden" onchange="document.getElementById('mailFileName').textContent = this.files[0] ? '📎 ' + this.files[0].name : '＋ Attach price list, invoice or image'">
+          <span id="mailFileName" class="truncate">＋ Attach price list, invoice or image</span>
+        </label>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <span class="font-extrabold">📅 When</span>
+            <div class="flex flex-wrap gap-1 mt-1">
+              <button id="mailToday" onclick="setMailDay(25)" class="hub-tab flex-1 px-2 py-2 rounded-full font-extrabold on">Today</button>
+              <button id="mailTomorrow" onclick="setMailDay(26)" class="hub-tab flex-1 px-2 py-2 rounded-full font-extrabold bg-[#e4f4df] text-[#2f8a55]">Tomorrow</button>
+            </div>
+          </div>
+          <label class="block"><span class="font-extrabold">⏰ Time</span>
+            <input id="mailTime" type="time" value="09:00" class="field mt-1" oninput="updateMailPreview()"></label>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="block"><span class="font-extrabold">Sending mode</span>
+            <select id="mailMode" class="field mt-1" onchange="updateMailPreview()">
+              <option value="auto">Send automatically</option>
+              <option value="remind">Remind me to send</option>
+            </select></label>
+          <label class="block"><span class="font-extrabold">🔔 Reminder</span>
+            <select id="mailLead" class="field mt-1" onchange="updateMailPreview()">
+              <option value="0">At send time</option>
+              <option value="15">15 minutes before</option>
+              <option value="60" selected>1 hour before</option>
+              <option value="1440">1 day before</option>
+            </select></label>
+        </div>
+        <div id="mailPreview" class="bg-[#f7fbf4] rounded-xl p-2.5 text-[11px] text-[#24432f] font-semibold border border-[#cfe7ca]"></div>
+      </div>
+
+      <div id="mailSaved" class="hidden bg-green-50 border border-[#2f8a55] text-[#1f633c] rounded-2xl p-3 text-xs font-bold"></div>
+
+      <div class="flex flex-wrap justify-end gap-2 pt-1">
+        <button onclick="openGmail()" class="text-xs px-4 py-2 rounded-full font-bold border border-[#cfe7ca] text-[#2f8a55]">Open in Gmail ↗</button>
+        <button onclick="saveMail()" id="mailSaveBtn" class="btn-pink text-xs px-5 py-2 rounded-full font-extrabold">Schedule Email</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================================== -->
+  <!-- JAVASCRIPT LOGIC & INTERACTIVITY                                -->
+  <!-- =============================================================== -->
+  <script>
+    // State Variables
+    let isLoggedIn = false;
+    let clockInterval = null;
+    let secondsElapsed = 1800; // 30 mins preset
+
+    // 1. Interface Toggle Logic
+    function toggleUserDashboard() {
+      isLoggedIn = !isLoggedIn;
+      const publicView = document.getElementById('publicLandingInterface');
+      const dashView = document.getElementById('userDashboardInterface');
+      const publicNav = document.getElementById('publicNav');
+      const label = document.getElementById('userAccountLabel');
+      const sub = document.getElementById('userAccountSub');
+      const badge = document.getElementById('userStatusBadge');
+
+      if (isLoggedIn) {
+        publicView.classList.add('hidden');
+        dashView.classList.remove('hidden');
+        publicNav.classList.add('hidden');
+        label.textContent = "Simon Guzman";
+        sub.textContent = "Log Out / Public View";
+        badge.textContent = "Logged In";
+        badge.className = "text-[10px] bg-[#e84a86] text-white font-black px-2 py-0.5 rounded-full";
+        startClock();
+      } else {
+        publicView.classList.remove('hidden');
+        dashView.classList.add('hidden');
+        publicNav.classList.remove('hidden');
+        label.textContent = "User Account / Log In";
+        sub.textContent = "Tap to access Dashboard";
+        badge.textContent = "Guest";
+        badge.className = "text-[10px] bg-[#e4f4df] text-[#2f8a55] font-black px-2 py-0.5 rounded-full border border-[#2f8a55]/30";
+      }
+    }
+
+    function showPublicLanding() {
+      if (isLoggedIn) {
+        toggleUserDashboard();
+      }
+    }
+
+    // 2. Clock-In / Shift Timer Logic
+    function startClock() {
+      if (clockInterval) clearInterval(clockInterval);
+      clockInterval = setInterval(() => {
+        const now = new Date();
+        document.getElementById('liveClockDisplay').textContent = now.toLocaleTimeString();
+        secondsElapsed++;
+        
+        const hrs = String(Math.floor(secondsElapsed / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((secondsElapsed % 3600) / 60)).padStart(2, '0');
+        const secs = String(secondsElapsed % 60).padStart(2, '0');
+        document.getElementById('shiftTimerDisplay').textContent = `Clocked In (${hrs}:${mins}:${secs} elapsed)`;
+      }, 1000);
+    }
+
+    function clockIn() {
+      secondsElapsed = 0;
+      document.getElementById('shiftStatusBadge').textContent = "Active Shift";
+      document.getElementById('shiftStatusBadge').className = "bg-green-100 text-green-800 text-[10px] font-black px-2 py-0.5 rounded-full";
+      alert("Shift Clocked In! Timer restarted.");
+    }
+
+    function clockOut() {
+      document.getElementById('shiftStatusBadge').textContent = "Shift Ended";
+      document.getElementById('shiftStatusBadge').className = "bg-red-100 text-red-800 text-[10px] font-black px-2 py-0.5 rounded-full";
+      alert("Clocked Out. Good job today!");
+    }
+
+    // 3. Automation Details Modal trigger
+    const automationsData = {
+      email: {
+        title: "1. Email",
+        icon: "✉️",
+        desc: "Automates sending promotional announcements, customer business updates, and follow-ups to maintain consistent touchpoints.",
+        access: "📍 Access Location: Dashboard > Left Sidebar > Email Tab"
+      },
+      inquiry: {
+        title: "2. Inquiry",
+        icon: "💬",
+        desc: "Organizes and manages customer inquiries received from Facebook, Instagram, and TikTok with automatic FAQ replies.",
+        access: "📍 Access Location: Dashboard > Middle Right Panel & Inbox Settings"
+      },
+      calendar: {
+        title: "3. Calendar",
+        icon: "🗓️",
+        desc: "Centralized calendar organizing business activities, promotional campaigns, and content schedules.",
+        access: "📍 Access Location: Dashboard > Middle Top Content Grid"
+      },
+      reminder: {
+        title: "4. Task Reminders",
+        icon: "🔔",
+        desc: "Automatically sends notifications regarding upcoming tasks, order deadlines, and business milestones.",
+        access: "📍 Access Location: Top Navigation Bar & Mobile Push Alerts"
+      },
+      posting: {
+        title: "5. Posting Reminders",
+        icon: "📲",
+        desc: "Notifies users when scheduled social posts are ready to be published or when optimal windows approach.",
+        access: "📍 Access Location: Right Sidebar > Plumy Posting Deadlines"
+      },
+      schedreminder: {
+        title: "6. Schedule Reminders",
+        icon: "📝",
+        desc: "Sends reminders regarding upcoming or pending schedules to ensure all campaign tasks finish on time.",
+        access: "📍 Access Location: Left Navigation & Workflow Alerts"
+      },
+      plumy: {
+        title: "7. Plumy AI Support",
+        icon: "🌸",
+        desc: "Provides instant AI assistance to generate content ideas, draft customer replies, and refine captions.",
+        access: "📍 Access Location: Accessible via Sidebar & Live Widget"
+      }
+    };
+
+    // ---- Which hub tab each sidebar automation opens (Calendar / Email / Reminder)
+    const hubTabFor = {
+      email: 'email', inquiry: 'email', plumy: 'email',
+      calendar: 'calendar',
+      reminder: 'reminder', posting: 'reminder', schedreminder: 'reminder'
+    };
+    const MONTH = 'October 2026';
+    let events = [];          // { id, day, name, time, loc, lead, channels[] }
+    let hubKey = 'calendar';
+    let hubTab = 'calendar';
+    let activeDay = null;
+
+    function esc(t) { return String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function fmtTime(t) {
+      if (!t) return '';
+      const [h, m] = t.split(':').map(Number);
+      return `${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')} ${h >= 12 ? 'PM' : 'AM'}`;
+    }
+    function leadText(l) {
+      return { 0: 'at event time', 15: '15 minutes before', 60: '1 hour before', 1440: '1 day before', 10080: '1 week before' }[l] || `${l} min before`;
+    }
+    function reminderLine(e) { return reminderLine0(e) + (sys && !sys.reminder ? ' · ⚠️ reminders offline' : ''); }
+    function reminderLine0(e) {
+      const r = `reminder ${leadText(e.lead)} via ${e.channels.join(' + ') || 'In-app'}`;
+      if (e.mode === 'auto') return `${e.platform === 'gmail' ? 'Auto-sends' : 'Auto-posts'} at ${fmtTime(e.time)} · ${r}`;
+      if (e.mode === 'remind') return `${e.platform === 'gmail' ? 'Send it yourself' : 'Post it yourself'} at ${fmtTime(e.time)} · ${r}`;
+      return `Reminder: ${leadText(e.lead)} (${fmtTime(e.time)}) via ${e.channels.join(' + ') || 'In-app'}`;
+    }
+
+    function triggerAutomation(key) {
+      const data = automationsData[key];
+      if (!data) return;
+      hubKey = key;
+      hubTab = hubTabFor[key] || 'calendar';
+
+      document.getElementById('modalIconTitle').innerHTML = `<span>${data.icon}</span> ${data.title}`;
+      document.getElementById('modalAccessBadge').innerHTML = data.access;
+      renderHub();
+      document.getElementById('automationModal').classList.remove('hidden');
+
+      // Update sidebar active tab
+      document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
+      const activeNav = document.getElementById(`nav-${key}`);
+      if (activeNav) activeNav.classList.add('active');
+    }
+
+    function switchHub(tab) { hubTab = tab; renderHub(); }
+
+    function renderHub() {
+      const data = automationsData[hubKey];
+      const tabs = [['calendar', '🗓️ Calendar'], ['email', '✉️ Email'], ['reminder', '🔔 Reminder']];
+      const bar = tabs.map(([k, l]) =>
+        `<button onclick="switchHub('${k}')" class="hub-tab ${hubTab === k ? 'on' : 'bg-[#e4f4df] text-[#2f8a55]'} flex-1 px-3 py-2 rounded-full font-extrabold text-xs">${l}</button>`).join('');
+      const offBanner = !sys[hubKey] ? `<div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 font-bold"><span>⏸ This tool is <b>Offline</b>. Turn it on to run automatically.</span><button onclick="setSys('${hubKey}', true)" class="btn-green text-[11px] px-3 py-1 rounded-full font-extrabold shrink-0">Turn on</button></div>` : '';
+      document.getElementById('modalBody').innerHTML =
+        `<p>${data.desc}</p>${offBanner}<div class="flex gap-2 pt-1">${bar}</div><div class="pt-2">${hubPanel()}</div>`;
+    }
+
+    function hubPanel() {
+      if (hubTab === 'calendar') {
+        const list = events.length
+          ? events.slice().sort((a, b) => (a.day || 99) - (b.day || 99)).map(e => `
+              <button onclick="openEv(${e.day || 0}, '${evDate(e)}')" class="w-full text-left p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] hover:border-[#e84a86]">
+                <div class="font-black text-[#2f8a55]">${evDate(e)} · ${esc(e.name)}</div>
+                <div class="text-[11px]">⏰ ${fmtTime(e.time)}${e.loc ? ' · 📍 ' + esc(e.loc) : ''}</div>
+                <div class="text-[11px] text-[#e84a86] font-bold">🔔 ${reminderLine(e)}</div>
+              </button>`).join('')
+          : '<div class="p-3 rounded-xl bg-[#f7fbf4] border border-dashed border-[#cfe7ca] text-center">No events yet. Tap a date number on the Central Content Calendar to add one.</div>';
+        return `<div class="space-y-2">${list}</div>
+          <button onclick="closeModal(); openDay(25)" class="btn-green text-xs px-4 py-2 rounded-full font-extrabold mt-3">＋ Add event (name, time, location)</button>`;
+      }
+      if (hubTab === 'email') {
+        return `<div class="space-y-2">
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-[#2f8a55]">Auto-Response</b> is <b>${(sys.email || sys.inquiry) ? 'ON' : 'OFF'}</b> — FAQ replies go out instantly on Facebook, Instagram and TikTok inquiries.</div>
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-[#2f8a55]">Promo email</b> · “Payday Sale” announcement queued for subscribers.</div>
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-[#2f8a55]">Follow-ups</b> · 2 customers waiting for a reply.</div>
+          ${events.length ? `<div class="p-2.5 rounded-xl border border-[#e84a86]/40 bg-[#ffe8f1]">✉️ ${events.length} calendar reminder${events.length > 1 ? 's are' : ' is'} also set to arrive by email.</div>` : ''}
+          <button onclick="openReply('maria', true)" class="btn-pink text-xs px-4 py-2 rounded-full font-extrabold">🌸 Draft replies with Plumy</button>
+        </div>`;
+      }
+      const base = [
+        { t: 'FB: Afternoon Coffee Reel', w: 'TODAY 11:30 AM' },
+        { t: 'IG: Customer Review Story', w: 'TODAY 06:00 PM' }
+      ].map(r => `<div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] flex justify-between"><b class="text-[#2f8a55]">📲 ${r.t}</b><span class="text-[#e84a86] font-black">${r.w}</span></div>`).join('');
+      const mine = events.map(e => `<div class="p-2.5 rounded-xl border border-[#e84a86]/40 bg-[#ffe8f1]"><b class="text-[#2f8a55]">🔔 ${esc(e.name)}</b> · ${evDate(e)}, ${fmtTime(e.time)}<div class="text-[11px]">${reminderLine(e)}</div></div>`).join('');
+      return `<div class="space-y-2">${base}${mine}</div>`;
+    }
+
+    // ---- Calendar date → name / time / location + automated reminder
+    function openDay(day, preset) {
+      activeDay = day;
+      document.getElementById('evDateTitle').textContent = `October ${day}, 2026`;
+      document.getElementById('evName').value = '';
+      document.getElementById('evLoc').value = '';
+      document.getElementById('evSaved').classList.add('hidden');
+      const existing = events.filter(e => e.day === day);
+      document.getElementById('evExisting').innerHTML = existing.map(e => `
+        <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] text-xs flex justify-between gap-2">
+          <div><div class="font-black text-[#2f8a55]">${esc(e.name)}</div>
+          <div>⏰ ${fmtTime(e.time)}${e.loc ? ' · 📍 ' + esc(e.loc) : ''}</div>
+          <div class="text-[#e84a86] font-bold">🔔 ${reminderLine(e)}</div></div>
+          <button onclick="removeEvent(${e.id})" class="text-red-500 font-black text-[11px] hover:underline">Delete</button>
+        </div>`).join('');
+      preset = preset || {};
+      document.getElementById('evName').value = preset.name || '';
+      document.getElementById('evLoc').value = preset.loc || '';
+      document.getElementById('evTime').value = preset.time || '09:00';
+      document.getElementById('evLead').value = String(preset.lead != null ? preset.lead : 60);
+      updateReminderPreview();
+      closeAll();
+      document.getElementById('eventModal').classList.remove('hidden');
+      document.getElementById('evName').focus();
+    }
+
+    function currentChannels() {
+      const c = [];
+      if (document.getElementById('chApp').checked) c.push('In-app');
+      if (document.getElementById('chEmail').checked) c.push('Email');
+      if (document.getElementById('chPush').checked) c.push('Mobile push');
+      return c;
+    }
+
+    function updateReminderPreview() {
+      const lead = Number(document.getElementById('evLead').value);
+      const time = document.getElementById('evTime').value;
+      const ch = currentChannels();
+      document.getElementById('evPreview').innerHTML =
+        `✅ Bloomfeed will automatically remind you <b>${leadText(lead)}</b> (event at <b>${fmtTime(time)}</b>) via <b>${ch.join(' + ') || 'In-app'}</b>.`;
+    }
+
+    function saveEvent() {
+      const name = document.getElementById('evName').value.trim();
+      if (!name) { document.getElementById('evName').focus(); document.getElementById('evName').style.outline = '2px solid #e84a86'; return; }
+      const ev = {
+        id: Date.now(), day: activeDay, name,
+        time: document.getElementById('evTime').value || '09:00',
+        loc: document.getElementById('evLoc').value.trim(),
+        lead: Number(document.getElementById('evLead').value),
+        channels: currentChannels()
+      };
+      if (!ev.channels.length) ev.channels = ['In-app'];
+      events.push(ev);
+      const cell = document.querySelector(`.cal-day[data-day="${activeDay}"]`);
+      if (cell) cell.classList.add('has-event');
+      const box = document.getElementById('evSaved');
+      box.innerHTML = `🔔 Automated reminder is active for <b>${esc(ev.name)}</b><br>⏰ ${fmtTime(ev.time)}${ev.loc ? ' · 📍 ' + esc(ev.loc) : ''}<br>${reminderLine(ev)}`;
+      box.classList.remove('hidden');
+      openDayListRefresh();
+    }
+
+    function openDayListRefresh() {
+      const keep = document.getElementById('evSaved').innerHTML;
+      const day = activeDay;
+      const existing = events.filter(e => e.day === day);
+      document.getElementById('evExisting').innerHTML = existing.map(e => `
+        <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] text-xs flex justify-between gap-2">
+          <div><div class="font-black text-[#2f8a55]">${esc(e.name)}</div>
+          <div>⏰ ${fmtTime(e.time)}${e.loc ? ' · 📍 ' + esc(e.loc) : ''}</div>
+          <div class="text-[#e84a86] font-bold">🔔 ${reminderLine(e)}</div></div>
+          <button onclick="removeEvent(${e.id})" class="text-red-500 font-black text-[11px] hover:underline">Delete</button>
+        </div>`).join('');
+      document.getElementById('evSaved').innerHTML = keep;
+      document.getElementById('evName').value = '';
+      document.getElementById('evLoc').value = '';
+    }
+
+    function removeEvent(id) {
+      events = events.filter(e => e.id !== id);
+      const cell = document.querySelector(`.cal-day[data-day="${activeDay}"]`);
+      if (cell && !events.some(e => e.day === activeDay)) cell.classList.remove('has-event');
+      document.getElementById('evSaved').classList.add('hidden');
+      openDayListRefresh();
+    }
+
+
+    // ---- Social channels: Instagram / Facebook / TikTok ----------------
+    // NOTE: front-end simulation. Real auto-posting needs each platform's official API
+    // (Meta Graph API for IG/FB, TikTok Content Posting API), OAuth login and a backend
+    // scheduler. "Remind me to post" mode works without any of that.
+    const channels = {
+      instagram: { name: 'Instagram', icon: '📸', url: 'https://www.instagram.com/', connected: false, tag: '#BloomfeedPH #SupportLocal' },
+      facebook:  { name: 'Facebook',  icon: '📘', url: 'https://www.facebook.com/',  connected: false, tag: '#BloomfeedPH #ShopLocal' },
+      tiktok:    { name: 'TikTok',    icon: '🎵', url: 'https://www.tiktok.com/upload', connected: false, tag: '#BloomfeedPH #FYP' }
+    };
+    let postPlatform = 'instagram';
+    let postDay = 25;          // 25, 26 or 'season'
+    let seasonDate = null;     // { label: 'Oct 31', day: 31 | null }
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.innerHTML = msg;
+      t.classList.remove('hidden');
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => t.classList.add('hidden'), 4000);
+    }
+    function evDate(e) { return e.dateLabel || `Oct ${e.day}`; }
+    function openEv(day, label) {
+      if (day) openDay(day); else toast(`📅 ${label} is saved. The calendar grid shows October only.`);
+    }
+    function addEvent(ev) {
+      events.push(ev);
+      if (ev.day) { const cell = document.querySelector(`.cal-day[data-day="${ev.day}"]`); if (cell) cell.classList.add('has-event'); }
+    }
+    function closeAll() { closeModal(); closeEvent(); closePost(); closeBoard(); closeInfo(); closeReply(); closeMail(); }
+
+    function openPost(key, preset) {
+      preset = preset || {};
+      postPlatform = key;
+      const c = channels[key];
+      closeAll();
+      document.getElementById('postTitle').innerHTML = `${c.icon} Post to ${c.name}`;
+      document.getElementById('postCaption').value = preset.caption || '';
+      document.getElementById('capCount').textContent = (preset.caption || '').length;
+      document.getElementById('postImg').value = '';
+      document.getElementById('imgPreview').classList.add('hidden');
+      document.getElementById('imgHint').classList.remove('hidden');
+      document.getElementById('postSaved').classList.add('hidden');
+      seasonDate = preset.season || null;
+      const sb = document.getElementById('daySeason');
+      if (seasonDate) { sb.textContent = '🎉 ' + seasonDate.label; sb.classList.remove('hidden'); } else { sb.classList.add('hidden'); }
+      setPostDay(preset.day || (seasonDate ? 'season' : 25));
+      renderConnect();
+      document.getElementById('postModal').classList.remove('hidden');
+      toast(`${c.icon} <b>${c.name}</b>: Open to post for tomorrow, or for today set a given time.`);
+    }
+
+    function closePost() { document.getElementById('postModal').classList.add('hidden'); }
+
+    function renderConnect() {
+      const c = channels[postPlatform];
+      document.getElementById('postConnect').innerHTML = c.connected
+        ? `<span>✅ <b>${c.name}</b> account linked — auto-posting available.</span><button onclick="toggleConnect()" class="text-red-500 font-black hover:underline">Disconnect</button>`
+        : `<span>🔗 <b>${c.name}</b> isn’t linked yet. Link it for auto-posting, or use “Remind me to post”.</span><button onclick="toggleConnect()" class="btn-green px-3 py-1.5 rounded-full font-extrabold shrink-0">Connect</button>`;
+      const badge = document.getElementById(`badge-${postPlatform}`);
+      badge.textContent = c.connected ? 'Linked' : 'Connect';
+      badge.className = c.connected ? 'text-[9px] bg-[#e84a86] text-white px-1.5 py-0.5 rounded' : 'text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded';
+      const mode = document.getElementById('postMode');
+      mode.value = (c.connected && sys.posting) ? 'auto' : 'remind';
+      mode.querySelector('option[value="auto"]').disabled = !(c.connected && sys.posting);
+      updatePostPreview();
+    }
+
+    function toggleConnect() {
+      const c = channels[postPlatform];
+      c.connected = !c.connected;   // real version: redirect to the platform's OAuth screen
+      renderConnect();
+      toast(c.connected ? `✅ ${c.name} connected (demo).` : `${c.name} disconnected.`);
+    }
+
+    function previewImg(input) {
+      const f = input.files && input.files[0];
+      if (!f || !f.type.startsWith('image/')) return;
+      const r = new FileReader();
+      r.onload = e => {
+        const img = document.getElementById('imgPreview');
+        img.src = e.target.result;
+        img.classList.remove('hidden');
+        document.getElementById('imgHint').classList.add('hidden');
+      };
+      r.readAsDataURL(f);
+    }
+
+    function plumyCaption() {
+      const c = channels[postPlatform];
+      document.getElementById('postCaption').value =
+        `Fresh from our shop to your feed! 💚 Grab yours today and support local. DM us to order via GCash or Maya.\n\n${c.tag}`;
+      document.getElementById('capCount').textContent = document.getElementById('postCaption').value.length;
+    }
+
+    function setPostDay(d) {
+      postDay = d;
+      const on = 'hub-tab flex-1 px-2 py-2 rounded-full font-extrabold on';
+      const off = 'hub-tab flex-1 px-2 py-2 rounded-full font-extrabold bg-[#e4f4df] text-[#2f8a55]';
+      document.getElementById('dayToday').className = d === 25 ? on : off;
+      document.getElementById('dayTomorrow').className = d === 26 ? on : off;
+      const sb = document.getElementById('daySeason');
+      sb.className = (seasonDate ? '' : 'hidden ') + (d === 'season' ? on : off);
+      updatePostPreview();
+    }
+
+    function postWhen() {
+      return postDay === 'season' && seasonDate ? seasonDate : { day: postDay, label: `Oct ${postDay}` };
+    }
+
+    function updatePostPreview() {
+      const mode = document.getElementById('postMode').value;
+      const lead = Number(document.getElementById('postLead').value);
+      const time = document.getElementById('postTime').value;
+      const c = channels[postPlatform];
+      document.getElementById('postSaveBtn').textContent = mode === 'auto' ? 'Schedule Auto-Post' : 'Set Posting Reminder';
+      document.getElementById('postPreview').innerHTML =
+        `🗓️ ${postWhen().label} at <b>${fmtTime(time)}</b> on the calendar · ` +
+        (mode === 'auto' ? `<b>${c.name}</b> will publish automatically` : `you’ll be reminded to post on <b>${c.name}</b>`) +
+        ` · 🔔 reminder <b>${leadText(lead)}</b>.`;
+    }
+
+    function openApp() { window.open(channels[postPlatform].url, '_blank', 'noopener'); }
+
+    function savePost() {
+      const caption = document.getElementById('postCaption').value.trim();
+      const hasImg = !document.getElementById('imgPreview').classList.contains('hidden');
+      if (!caption && !hasImg) {
+        document.getElementById('postCaption').focus();
+        toast('✍️ Add a caption or attach an image first.');
+        return;
+      }
+      const c = channels[postPlatform];
+      const when = postWhen();
+      const ev = {
+        id: Date.now(), day: when.day, dateLabel: when.label, platform: postPlatform,
+        name: `${c.icon} ${c.name}: ${caption ? caption.slice(0, 28) + (caption.length > 28 ? '…' : '') : 'Image post'}`,
+        time: document.getElementById('postTime').value || '18:00',
+        loc: '', lead: Number(document.getElementById('postLead').value),
+        channels: ['In-app', 'Mobile push'],
+        mode: document.getElementById('postMode').value
+      };
+      addEvent(ev);
+      const box = document.getElementById('postSaved');
+      box.innerHTML = `✅ Added to your calendar on <b>${when.label}</b>${hasImg ? ' with image' : ''}.<br>🔔 ${reminderLine(ev)}`;
+      box.classList.remove('hidden');
+      toast(`🔔 ${c.name} post saved for ${when.label}, ${fmtTime(ev.time)}.`);
+    }
+
+    function closeEvent() { document.getElementById('eventModal').classList.add('hidden'); }
+
+    function closeModal() {
+      document.getElementById('automationModal').classList.add('hidden');
+    }
+
+    function quickReply(name) {
+      alert(`Plumy AI generated quick response for ${name}! Message sent.`);
+    }
+
+
+    // =====================================================================
+    // THEME (light / dark)
+    // =====================================================================
+    function applyTheme(t) {
+      document.documentElement.classList.toggle('dark', t === 'dark');
+      document.getElementById('themeToggle').textContent = t === 'dark' ? '☀️ Light' : '🌙 Dark';
+      try { localStorage.setItem('bf-theme', t); } catch (e) { /* storage may be unavailable */ }
+    }
+    function toggleTheme() { applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark'); }
+
+    // =====================================================================
+    // WEATHER (Open-Meteo, free, no API key). Falls back to sample data offline.
+    // =====================================================================
+    const cities = { 'Parañaque': [14.4793, 121.0198], 'Manila': [14.5995, 120.9842], 'Quezon City': [14.676, 121.0437], 'Cebu City': [10.3157, 123.8854], 'Davao City': [7.1907, 125.4553] };
+    let wxCity = 'Parañaque';
+    let wx = null;
+    function wmo(c) {
+      if (c === 0) return { i: '☀️', t: 'Clear' };
+      if (c <= 2) return { i: '⛅', t: 'Partly cloudy' };
+      if (c === 3) return { i: '☁️', t: 'Cloudy' };
+      if (c === 45 || c === 48) return { i: '🌫️', t: 'Foggy' };
+      if (c >= 51 && c <= 57) return { i: '🌦️', t: 'Drizzle' };
+      if ((c >= 61 && c <= 67) || (c >= 80 && c <= 82)) return { i: '🌧️', t: 'Rain' };
+      if (c >= 95) return { i: '⛈️', t: 'Thunderstorm' };
+      return { i: '🌤️', t: 'Fair' };
+    }
+    async function loadWeather() {
+      const [la, lo] = cities[wxCity];
+      try {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current=temperature_2m,relative_humidity_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FManila&forecast_days=3`;
+        const r = await fetch(url);
+        if (!r.ok) throw new Error('weather http ' + r.status);
+        const j = await r.json();
+        wx = { live: true, temp: Math.round(j.current.temperature_2m), code: j.current.weather_code, hum: j.current.relative_humidity_2m,
+          days: j.daily.time.map((d, i) => ({ d, code: j.daily.weather_code[i], hi: Math.round(j.daily.temperature_2m_max[i]), lo: Math.round(j.daily.temperature_2m_min[i]), rain: j.daily.precipitation_probability_max[i] })) };
+      } catch (e) {
+        wx = { live: false, temp: 31, code: 2, hum: 72, days: [
+          { d: '2026-10-25', code: 2, hi: 33, lo: 26, rain: 30 }, { d: '2026-10-26', code: 61, hi: 31, lo: 25, rain: 60 }, { d: '2026-10-27', code: 3, hi: 32, lo: 26, rain: 40 }] };
+      }
+      renderWeather();
+    }
+    function weatherTip() {
+      const t = wx.days[1] || wx.days[0];
+      const rainy = t.rain >= 50 || (t.code >= 51 && t.code <= 99 && t.code !== 45 && t.code !== 48);
+      if (rainy) return { text: '🌧️ Rain likely tomorrow — push delivery, hot items and “stay-in” promos. Remind customers to order early.', caption: 'Rainy day cravings? ☔ Stay dry — we deliver! Hot orders straight to your door 💚 #BloomfeedPH #RainyDayPH' };
+      if (t.hi >= 33) return { text: '🥵 Very hot tomorrow — promote cold drinks and ice-cold bundles. Post early morning.', caption: 'Init! 🥵 Beat the heat with our ice-cold treats ❄️ Order now — we deliver! #BloomfeedPH #SummerVibes' };
+      return { text: '🌤️ Nice weather tomorrow — great day for pop-ups, meet-ups and photo shoots.', caption: 'Perfect weather to treat yourself ☀️💚 Visit us today or order for delivery! #BloomfeedPH #SupportLocal' };
+    }
+    function renderWeather() {
+      const cur = wmo(wx.code);
+      document.getElementById('wxIcon').textContent = cur.i;
+      document.getElementById('wxTemp').textContent = wx.temp + '°C';
+      document.getElementById('wxCond').textContent = cur.t;
+      document.getElementById('wxCity').textContent = wxCity;
+      const days = wx.days.map((d, i) => {
+        const w = wmo(d.code);
+        const lbl = i === 0 ? 'Today' : i === 1 ? 'Tmrw' : new Date(d.d + 'T00:00:00').toLocaleDateString('en-PH', { weekday: 'short' });
+        return `<div class="flex-1 text-center bg-[#f7fbf4] border border-[#cfe7ca] rounded-2xl p-2"><div class="font-black text-[#2f8a55]">${lbl}</div><div class="text-xl">${w.i}</div><div class="font-bold text-[#24432f]">${d.hi}° / ${d.lo}°</div><div class="text-[10px] text-[#5f7d68]">💧 ${d.rain ?? 0}%</div></div>`;
+      }).join('');
+      const opts = Object.keys(cities).map(c => `<option ${c === wxCity ? 'selected' : ''}>${c}</option>`).join('');
+      document.getElementById('weatherPanel').innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <div class="font-serif-heading text-xl text-[#2f8a55]">${cur.i} ${wx.temp}°C · ${cur.t}</div>
+          <button onclick="toggleWeather()" class="text-gray-400 hover:text-black font-black" aria-label="Close">✕</button>
+        </div>
+        <div class="flex items-center gap-2"><select onchange="setCity(this.value)" class="field">${opts}</select><span class="text-[10px] text-[#5f7d68] shrink-0">💧 ${wx.hum}% humidity</span></div>
+        <div class="flex gap-2">${days}</div>
+        <div class="bg-[#ffe8f1] border border-[#e84a86]/40 rounded-2xl p-2.5 font-semibold text-[#24432f]">🌸 Plumy tip: ${weatherTip().text}</div>
+        <div class="flex gap-2"><button onclick="weatherPost()" class="btn-pink flex-1 text-[11px] py-2 rounded-full font-extrabold">Draft a weather-smart post</button><button onclick="loadWeather()" class="border border-[#cfe7ca] text-[#2f8a55] text-[11px] px-3 py-2 rounded-full font-bold">↻</button></div>
+        <div class="text-[10px] text-[#5f7d68]">${wx.live ? 'Live forecast · Open-Meteo' : '⚠️ Offline — showing sample data'}</div>`;
+    }
+    function toggleWeather() { document.getElementById('weatherPanel').classList.toggle('hidden'); }
+    function setCity(c) { wxCity = c; loadWeather(); }
+    function weatherPost() { document.getElementById('weatherPanel').classList.add('hidden'); openPost('facebook', { day: 26, caption: weatherTip().caption }); }
+
+    // =====================================================================
+    // INFO MODAL, PROFILE, STATUS, TODAY, TEAM
+    // =====================================================================
+    function showInfo(title, html) {
+      closeAll();
+      document.getElementById('infoTitle').innerHTML = title;
+      document.getElementById('infoBody').innerHTML = html;
+      document.getElementById('infoModal').classList.remove('hidden');
+    }
+    function closeInfo() { document.getElementById('infoModal').classList.add('hidden'); }
+
+    const sys = { email: true, inquiry: true, calendar: true, reminder: true, posting: true, schedreminder: true, plumy: true };
+    function statusRows() {
+      return Object.keys(sys).map(k => `<button onclick="setSys('${k}')" class="w-full flex items-center justify-between gap-2 p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] font-bold text-left"><span class="min-w-0">${automationsData[k].icon} ${automationsData[k].title}</span><span class="${sys[k] ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-700'} text-[10px] font-black px-2 py-0.5 rounded-full shrink-0">${sys[k] ? 'Active' : 'Offline'}</span></button>`).join('');
+    }
+    function statusBody() { return `<p class="text-[#5f7d68]">Tap a tool to switch it on or off. Offline tools stop running until you turn them back on.</p><div class="space-y-1.5">${statusRows()}</div>`; }
+    function openStatus() { showInfo('● System Status', statusBody()); }
+    function paintSys(k) {
+      const on = sys[k];
+      const sw = document.getElementById('sw-' + k); if (!sw) return;
+      sw.setAttribute('aria-checked', String(on));
+      const st = document.getElementById('st-' + k);
+      st.className = 'st-pill ' + (on ? 'on' : 'off');
+      st.textContent = on ? '● Active' : '○ Offline';
+      document.getElementById('swl-' + k).textContent = on ? 'ON' : 'OFF';
+      document.getElementById('item-' + k).classList.toggle('off', !on);
+    }
+    function setSys(k, val) {
+      sys[k] = (val === undefined) ? !sys[k] : !!val;
+      paintSys(k);
+      updateStatusBadge();
+      updateAutoBadge();
+      if (typeof chatState === 'function') chatState();
+      const info = document.getElementById('infoModal');
+      if (!info.classList.contains('hidden') && document.getElementById('infoTitle').textContent.includes('System Status')) document.getElementById('infoBody').innerHTML = statusBody();
+      if (!document.getElementById('automationModal').classList.contains('hidden') && hubKey === k) renderHub();
+      toast(sys[k] ? `✅ ${automationsData[k].title} is <b>ON</b> — Active` : `⏸ ${automationsData[k].title} is <b>OFF</b> — Offline`);
+    }
+    function updateStatusBadge() {
+      const n = Object.values(sys).filter(Boolean).length;
+      document.getElementById('statusBadge').textContent = n === 7 ? '● All Automations Active' : n === 0 ? '● All Offline' : `● ${n} of 7 Active`;
+    }
+    function updateAutoBadge() {
+      const el = document.getElementById('autoRespBadge'); if (!el) return;
+      el.textContent = (sys.email || sys.inquiry) ? 'Auto-Response On' : 'Auto-Response Off';
+    }
+
+    function openToday() {
+      const rows = [
+        ['facebook', '📘', 'Afternoon Coffee Reel', '11:30 AM', 'Afternoon coffee break ☕💚 Fresh brews are ready — drop by or order for delivery! #BloomfeedPH #SupportLocal'],
+        ['instagram', '📸', 'Customer Review Story', '6:00 PM', 'Real customers, real love 💚 Thank you for trusting our little shop! #BloomfeedPH #CustomerReview'],
+        ['tiktok', '🎵', 'Payday Teaser Video', '8:00 PM', 'Payday is coming! 💸 Something special drops soon… stay tuned 👀 #BloomfeedPH #PaydayPH']
+      ].map(r => `<button onclick="openPost('${r[0]}', {caption: ${JSON.stringify(r[4]).replace(/"/g, '&quot;')}})" class="w-full text-left flex items-center justify-between p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4] font-bold"><span>${r[1]} ${r[2]}</span><span class="text-[#e84a86]">${r[3]}</span></button>`).join('');
+      showInfo('🗓️ Scheduled Today', `<p class="text-[#5f7d68]">Tap a post to review, edit the caption or change its time.</p><div class="space-y-1.5">${rows}</div>`);
+    }
+
+    function openTeam() {
+      showInfo('👥 Project Team', `
+        <div class="space-y-1.5">
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-[#e84a86]">SG</b> · Simon Guzman — Store Admin</div>
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-[#2f8a55]">MT</b> · Marketing Team member</div>
+          <div class="p-2.5 rounded-xl border border-[#cfe7ca] bg-[#f7fbf4]"><b class="text-amber-600">PA</b> · Team member</div>
+        </div>
+        <button onclick="openDay(27, {name: 'Team task: weekly content meeting', time: '10:00', loc: 'Shop / Google Meet', lead: 60})" class="btn-green text-xs px-4 py-2 rounded-full font-extrabold mt-2">📅 Assign a task on the calendar</button>`);
+    }
+
+    function openProfile() {
+      const chips = Object.keys(personas).map(k => `<button onclick="setPersona('${k}'); openProfile()" class="${k === persona ? 'btn-pink' : 'bg-[#e4f4df] text-[#2f8a55]'} px-3 py-1.5 rounded-full font-extrabold text-xs">${personas[k].label}</button>`).join('');
+      const themeBtns = Object.keys(colorThemes).map(k => `<button onclick="pickColorTheme('${k}')" aria-pressed="${k === colorTheme}" class="theme-card ${k === colorTheme ? 'sel' : ''}"><span class="theme-sw" style="background:${colorThemes[k].sw}"></span><span class="font-extrabold">${colorThemes[k].label}</span><span class="text-[10px] opacity-70">${colorThemes[k].sub}</span></button>`).join('');
+      const dark = document.documentElement.classList.contains('dark');
+      showInfo('👤 Simon Guzman', `
+        <div class="text-[#5f7d68]">Store Admin · Active</div>
+        <div class="font-black text-[#2f8a55] pt-2">🎨 Theme</div>
+        <div class="grid grid-cols-3 gap-2">${themeBtns}</div>
+        <div class="flex gap-2 pt-1">
+          <button onclick="applyTheme('light'); openProfile()" class="${!dark ? 'btn-green' : 'bg-[#e4f4df] text-[#2f8a55]'} flex-1 px-3 py-1.5 rounded-full font-extrabold text-xs">☀️ Light</button>
+          <button onclick="applyTheme('dark'); openProfile()" class="${dark ? 'btn-green' : 'bg-[#e4f4df] text-[#2f8a55]'} flex-1 px-3 py-1.5 rounded-full font-extrabold text-xs">🌙 Dark (black)</button>
+        </div>
+        <div class="font-black text-[#2f8a55] pt-2">Business type</div>
+        <div class="flex flex-wrap gap-1.5">${chips}</div>
+        <p class="text-[#5f7d68]">Plumy tailors its captions, reminders and quick actions to your business type.</p>
+        <button onclick="closeInfo(); toggleUserDashboard()" class="border border-[#cfe7ca] text-[#5f7d68] text-xs px-4 py-2 rounded-full font-bold mt-1">Log out / Public view</button>`);
+    }
+
+    // =====================================================================
+    // REPLY (EMAIL & INQUIRIES)
+    // =====================================================================
+    const inquiries = {
+      maria:     { name: 'Maria Clara', ch: 'Instagram DM', msg: 'Magkano po delivery to Makati?', draft: 'Hi Maria! 💚 Delivery to Makati starts at ₱49 via Lalamove/Grab. Send us your pin address and we’ll confirm your total po!', sent: false, inbox: true },
+      chef:      { name: 'Chef Juan', ch: 'Email', msg: 'Is Ube Cheesecake available for bulk order?', draft: 'Hello Chef Juan! Yes po, our Ube Cheesecake is available for bulk orders (min. 10 pcs, 2-day lead time). I’ll send your quotation today. Salamat! 💚', sent: false, inbox: true },
+      refund:    { name: 'Order Cancellation Inquiry', ch: 'Messenger', msg: 'Customer asking about GCash refund process.', draft: 'Hi po! Sorry to hear that. We’ll process your GCash refund within 1–3 business days once we confirm your order number. Please send your order # and GCash name 💚', sent: false },
+      wholesale: { name: 'Reseller', ch: 'Email', msg: 'Wholesale Pricing Sheet — send the updated PDF catalog.', draft: 'Hi! Attached is our updated wholesale price sheet 📎. Reseller rates start at 10 pcs. Let us know what you’d like to stock!', sent: false }
+    };
+    const replyChips = [
+      ['🚚 Delivery fee', 'Delivery starts at ₱49 via Lalamove/Grab. Send your pin address and we’ll confirm! 💚'],
+      ['✅ In stock', 'Yes po, it’s available! Would you like to reserve yours?'],
+      ['💳 Payment', 'We accept GCash, Maya, InstaPay and PESONet 💚'],
+      ['🙏 Thanks', 'Salamat po for reaching out! 💚']
+    ];
+    let replyId = null;
+    function openReply(id, withDraft) {
+      replyId = id;
+      const q = inquiries[id];
+      closeAll();
+      document.getElementById('replyTitle').textContent = '↩ Reply to ' + q.name;
+      document.getElementById('replyMsg').innerHTML = `<div class="text-[10px] text-[#5f7d68] font-black uppercase mb-1">${q.ch}${q.sent ? ' · already replied' : ''}</div>“${esc(q.msg)}”`;
+      document.getElementById('replyChips').innerHTML = replyChips.map((c, i) => `<button onclick="addChip(${i})" class="text-[11px] bg-[#e4f4df] text-[#2f8a55] font-bold px-2.5 py-1 rounded-full">${c[0]}</button>`).join('');
+      document.getElementById('replyText').value = withDraft ? q.draft : '';
+      document.getElementById('replyAttach').checked = id === 'wholesale';
+      document.getElementById('replyModal').classList.remove('hidden');
+      document.getElementById('replyText').focus();
+    }
+    function closeReply() { document.getElementById('replyModal').classList.add('hidden'); }
+    function addChip(i) { const t = document.getElementById('replyText'); t.value = (t.value ? t.value + ' ' : '') + replyChips[i][1]; t.focus(); }
+    function plumyReply() { document.getElementById('replyText').value = inquiries[replyId].draft; toast('🌸 Plumy drafted a reply — edit it before sending.'); }
+    function sendReply() {
+      const txt = document.getElementById('replyText').value.trim();
+      if (!txt) { document.getElementById('replyText').focus(); toast('✍️ Type a reply first, or tap “Plumy draft”.'); return; }
+      const q = inquiries[replyId];
+      q.sent = true;
+      const st = document.getElementById('status-' + replyId);
+      if (st) { st.textContent = 'Replied ✓'; st.className = 'text-[10px] bg-green-200 text-green-900 font-bold px-2 py-0.5 rounded-full'; }
+      const bt = document.getElementById('btn-' + replyId);
+      if (bt) bt.textContent = '↩ Reply again';
+      const left = Object.values(inquiries).filter(x => x.inbox && !x.sent).length;
+      const badge = document.getElementById('sidebarInquiryBadge');
+      if (badge) badge.textContent = left ? `${left} New` : 'All clear';
+      closeReply();
+      toast(`✅ Reply sent to ${q.name}${document.getElementById('replyAttach').checked ? ' with attachment' : ''}.`);
+    }
+
+    // =====================================================================
+    // PERSONAS: STUDENT / ENTREPRENEUR / MSME
+    // =====================================================================
+    const personas = {
+      student: { label: '🎓 Student', tail: 'Campus pickup available 🎓', intro: 'Selling on campus while studying? Batch your posts once, then let reminders and auto-replies run between classes.',
+        actions: [
+          { i: '📲', t: 'Batch a pre-order post', d: 'Instagram post for tomorrow', run: () => openPost('instagram', { day: 26, caption: 'Weekend pre-orders are OPEN! 🎓💚 Order before Friday 6PM, campus pickup. DM to reserve! #BloomfeedPH #CampusSeller' }) },
+          { i: '⏰', t: 'Pack-orders-before-class alarm', d: 'Reminder tomorrow, 7 AM', run: () => openDay(26, { name: 'Pack orders before class', time: '07:00', loc: 'Dorm / Campus', lead: 15 }) },
+          { i: '💬', t: 'Quick-reply “Magkano?”', d: 'Plumy drafts the price reply', run: () => openReply('maria', true) }] },
+      entrepreneur: { label: '💼 Entrepreneur', tail: 'Fast delivery nationwide 🚚', intro: 'Running solo? Let Plumy handle captions, follow-ups and payday promos so you can focus on growing.',
+        actions: [
+          { i: '🗓️', t: 'Plan tomorrow’s content', d: 'Facebook post, ready to edit', run: () => openPost('facebook', { day: 26, caption: 'New week, new treats! 💚 Check out what’s fresh in our shop today. Message us to order! #BloomfeedPH #SupportLocal' }) },
+          { i: '💸', t: 'Payday promo reminder', d: 'Oct 30 · 1 day before', run: () => openDay(30, { name: 'Payday promo blast', time: '09:00', lead: 1440 }) },
+          { i: '📨', t: 'Quote a bulk order', d: 'Reply to Chef Juan', run: () => openReply('chef', true) }] },
+      msme: { label: '🏪 MSME', tail: 'Bulk & reseller rates available 🏪', intro: 'Managing a team and a shop? Keep staff tasks, customer replies and promos organized in one place.',
+        actions: [
+          { i: '📸', t: 'Staff product shoot', d: 'Oct 27 · 2 PM at the shop', run: () => openDay(27, { name: 'Staff product shoot', time: '14:00', loc: 'Shop', lead: 60 }) },
+          { i: '📎', t: 'Reply with wholesale catalog', d: 'Plumy drafts it for you', run: () => openReply('wholesale', true) },
+          { i: '🎵', t: 'Slow-day TikTok promo', d: 'Boost walk-ins today', run: () => openPost('tiktok', { caption: 'Slow Tuesday? Not here! 🛍️ Show this post for 10% off today only. #BloomfeedPH #SupportLocal' }) }] }
+    };
+    let persona = 'msme';
+    let personaMenu = false;
+    function setPersona(k) { persona = k; personaMenu = false; renderPersona(); }
+    function togglePersonaMenu() { personaMenu = !personaMenu; renderPersona(); }
+    function renderPersona() {
+      const P = personas[persona];
+      const others = Object.keys(personas).filter(k => k !== persona).map(k =>
+        `<button onclick="setPersona('${k}')" class="bg-[#e4f4df] text-[#2f8a55] px-3 py-1.5 rounded-full font-extrabold text-xs">${personas[k].label}</button>`).join('');
+      document.getElementById('personaBar').innerHTML =
+        `<button onclick="togglePersonaMenu()" aria-expanded="${personaMenu}" title="Change business type" class="btn-pink px-3 py-1.5 rounded-full font-extrabold text-xs">${P.label} ${personaMenu ? '▴' : '▾'}</button>` +
+        (personaMenu ? `<span class="text-[11px] text-[#5f7d68] font-bold self-center">Switch to:</span>${others}` : '');
+      document.getElementById('personaIntro').textContent = P.intro;
+      updateProfileCard();
+      document.getElementById('personaActions').innerHTML = P.actions.map((a, i) =>
+        `<button onclick="personas[persona].actions[${i}].run()" class="text-left p-3 rounded-2xl border border-[#cfe7ca] bg-[#f7fbf4] hover:border-[#e84a86] hover:shadow-md transition-all"><div class="text-xl">${a.i}</div><div class="font-black text-xs text-[#2f8a55] mt-1">${a.t}</div><div class="text-[11px] text-[#5f7d68]">${a.d}</div></button>`).join('');
+    }
+
+    // =====================================================================
+    // PROJECT BOARD: SEASONS + PLUMY CAPTIONS
+    // =====================================================================
+    const TODAY = new Date(2026, 9, 25);
+    const seasons = {
+      payday: { icon: '💰', name: 'Payday Promo', date: 'Oct 30', day: 30, dateObj: new Date(2026, 9, 30), deco: ['💰', '💚', '🛍️'], tag: 'Cross-platform roll-out with email codes and video teasers',
+        tasks: ['Finalize discount codes', 'Film TikTok teaser video', 'Email blast to subscribers', 'Pin payday reply templates'], preDone: [0, 1, 2],
+        tags: '#BloomfeedPH #PaydayPH #SupportLocal',
+        captions: ['Payday na! 💸 Treat yourself AND support local — enjoy 15% off all orders today. DM us to claim your code!', 'Sweldo season! 🎉 Stock up and save with our Payday Special. Limited slots, order na!'] },
+      halloween: { icon: '🎃', name: 'Halloween', date: 'Oct 31', day: 31, dateObj: new Date(2026, 9, 31), deco: ['🎃', '🦇', '👻', '🕸️', '🕯️'], tag: 'Spooky-good sales, sweet treats',
+        tasks: ['Order spooky packaging & treat boxes', 'Post a “Trick or Treat” promo', 'Email subscribers a Halloween code', 'Set auto-reply: Halloween delivery cut-off', 'Schedule 3-day countdown stories'],
+        tags: '#BloomfeedPH #HalloweenPH #TrickOrTreat',
+        captions: ['Trick or treat yourself! 🎃 Our spooky-good bestsellers are here — grab a box before they vanish like a ghost 👻 DM to order!', 'Boo! 🦇 Our Halloween treat boxes are alive… and limited! Pre-order now, pay via GCash or Maya.', 'Something wicked this way comes… 🕸️ a 10% off treat for every costume-wearing customer on Oct 31! 🎃'] },
+      christmas: { icon: '🎄', name: 'Christmas', date: 'Dec 25', day: null, dateObj: new Date(2026, 11, 25), deco: ['🎄', '❄️', '🎁', '⭐', '🔔'], tag: 'Ber months, Noche Buena and gifting',
+        tasks: ['Open Noche Buena & gift bundle pre-orders', 'Email early-bird “Ber months” promo', 'Set last-day-to-order reminder (Dec 20)', 'Auto-reply for holiday delivery & shop hours', 'Schedule gift-guide posts on IG + FB'],
+        tags: '#BloomfeedPH #ChristmasPH #NocheBuena',
+        captions: ['Pasko na naman! 🎄 Our Noche Buena bundles and gift boxes are open for pre-order. Order before Dec 20 for guaranteed delivery! 🎁', 'The best gift is a local one 💚 Wrap up the season with our Christmas bundles — ships nationwide! ❄️', 'Ho ho hold on, there’s more! 🎅 Free gift wrap on every Christmas order this week. DM us to claim!'] },
+      nye: { icon: '🎆', name: 'New Year’s Eve', date: 'Dec 31', day: null, dateObj: new Date(2026, 11, 31), deco: ['🎆', '🥂', '✨', '🎇', '🕛'], tag: 'Media Noche and a bloomin’ new year',
+        tasks: ['Launch Media Noche pre-order bundle', 'Plan countdown stories for TikTok', 'Schedule a “Thank you 2026” customer post', 'Email year-end vouchers to loyal customers', 'Set auto-reply for Jan 1 shop hours'],
+        tags: '#BloomfeedPH #NewYearPH #MediaNoche',
+        captions: ['Cheers to a bloomin’ 2027! 🎆 Our Media Noche bundles are open — reserve yours before slots run out 🥂', 'Thank you for growing with us this year! 💚 Count down with us on Dec 31 — surprise vouchers for loyal customers ✨', '3… 2… 1… 🎇 Start 2027 with a table full of good food. Pre-order your Media Noche spread today!'] }
+    };
+    let boardSeason = 'halloween';
+    const taskDone = {}, capShown = {}, capIdx = {}, capText = {};
+    seasons.payday.preDone.forEach(i => taskDone['payday:' + i] = true);
+
+    function openBoard(k) {
+      boardSeason = k || boardSeason;
+      document.getElementById('automationModal').classList.add('hidden');
+      closeEvent(); closePost(); closeInfo(); closeReply();
+      renderBoard();
+      document.getElementById('boardModal').classList.remove('hidden');
+    }
+    function closeBoard() { document.getElementById('boardModal').classList.add('hidden'); }
+    function toggleTask(i) { const k = boardSeason + ':' + i; taskDone[k] = !taskDone[k]; renderBoard(); }
+    function buildCaption() {
+      const S = seasons[boardSeason];
+      const idx = (capIdx[boardSeason] || 0) % S.captions.length;
+      return `${S.captions[idx]}\n\n${personas[persona].tail}\n${S.tags}`;
+    }
+    function genCaption() { capShown[boardSeason] = true; capIdx[boardSeason] = capIdx[boardSeason] || 0; capText[boardSeason] = buildCaption(); renderBoard(); }
+    function nextCaption() { capIdx[boardSeason] = (capIdx[boardSeason] || 0) + 1; capText[boardSeason] = buildCaption(); renderBoard(); }
+    function skipCaption() { toast('🌸 No problem! Tap the board again anytime and Plumy will write it.'); }
+    function copyCaption() {
+      const v = document.getElementById('boardCaption').value;
+      try { navigator.clipboard.writeText(v).then(() => toast('📋 Caption copied!'), () => toast('Select the text and copy it manually.')); }
+      catch (e) { toast('Select the text and copy it manually.'); }
+    }
+    function postSeason(platform) {
+      const S = seasons[boardSeason];
+      openPost(platform, { caption: document.getElementById('boardCaption').value, season: { label: S.date, day: S.day } });
+    }
+    function seasonReminder() {
+      const S = seasons[boardSeason];
+      addEvent({ id: Date.now(), day: S.day, dateLabel: S.date, name: `${S.icon} ${S.name} prep`, time: '09:00', loc: '', lead: 10080, channels: ['In-app', 'Email'] });
+      toast(`🔔 Plumy will remind you 1 week before ${S.name} (${S.date}).`);
+    }
+    function renderBoard() {
+      const S = seasons[boardSeason];
+      document.getElementById('boardCard').setAttribute('data-season', boardSeason);
+      const tabs = Object.keys(seasons).map(k => `<button onclick="openBoard('${k}')" class="${k === boardSeason ? 'b-btn' : 'b-ghost'}">${seasons[k].icon} ${seasons[k].name}</button>`).join('');
+      const done = S.tasks.filter((t, i) => taskDone[boardSeason + ':' + i]).length;
+      const pct = Math.round(done / S.tasks.length * 100);
+      const left = Math.ceil((S.dateObj - TODAY) / 86400000);
+      const deco = S.deco.map((d, i) => `<span style="animation-delay:${i * 0.35}s">${d}</span>`).join('');
+      const tasks = S.tasks.map((t, i) => { const on = taskDone[boardSeason + ':' + i];
+        return `<button onclick="toggleTask(${i})" class="w-full text-left flex items-center gap-2 b-panel px-3 py-2 text-xs font-bold"><span class="text-base">${on ? '✅' : '⬜'}</span><span class="${on ? 'line-through opacity-60' : ''}">${t}</span></button>`; }).join('');
+      const plumy = !capShown[boardSeason]
+        ? `<div class="b-panel p-4 space-y-2">
+             <div class="font-black text-sm">🌸 Would you like Plumy to generate a season theme caption?</div>
+             <div class="text-xs b-sub">Plumy writes a ${S.name} caption in a ${personas[persona].label} tone, ready to post.</div>
+             <div class="flex gap-2"><button onclick="genCaption()" class="b-btn">✨ Yes, generate</button><button onclick="skipCaption()" class="b-ghost">Not now</button></div>
+           </div>`
+        : `<div class="b-panel p-4 space-y-2">
+             <div class="font-black text-sm">🌸 Plumy’s ${S.name} caption</div>
+             <textarea id="boardCaption" rows="5" oninput="capText[boardSeason]=this.value" class="field" style="font-size:12px">${esc(capText[boardSeason] || '')}</textarea>
+             <div class="flex flex-wrap gap-2"><button onclick="nextCaption()" class="b-ghost">🔁 Another idea</button><button onclick="copyCaption()" class="b-ghost">📋 Copy</button></div>
+             <div class="text-xs font-black pt-1">Post it to:</div>
+             <div class="flex flex-wrap gap-2"><button onclick="postSeason('instagram')" class="b-btn">📸 Instagram</button><button onclick="postSeason('facebook')" class="b-btn">📘 Facebook</button><button onclick="postSeason('tiktok')" class="b-btn">🎵 TikTok</button></div>
+           </div>`;
+      document.getElementById('boardBody').innerHTML = `
+        <div class="flex flex-wrap gap-2">${tabs}</div>
+        <div class="b-panel p-4">
+          <div class="float-deco text-2xl tracking-widest">${deco}</div>
+          <div class="font-serif-heading text-3xl mt-1">${S.icon} ${S.name}</div>
+          <div class="text-xs b-sub">${S.tag}</div>
+          <div class="flex flex-wrap items-center gap-2 mt-2 text-xs font-black"><span class="b-ac">📅 ${S.date}, 2026</span><span class="b-sub">·</span><span>${left > 0 ? left + ' days to go' : 'Today!'}</span></div>
+          <div class="mt-3"><div class="flex justify-between text-[11px] font-bold mb-1"><span>${done} of ${S.tasks.length} tasks done</span><span>${pct}%</span></div><div class="b-bar"><div style="width:${pct}%"></div></div></div>
+        </div>
+        <div class="space-y-1.5"><div class="text-xs font-black uppercase tracking-wide b-sub">Tasks · tap to tick off</div>${tasks}</div>
+        ${plumy}
+        <div class="flex flex-wrap gap-2"><button onclick="seasonReminder()" class="b-ghost">🔔 Remind me 1 week before</button><button onclick="closeBoard(); triggerAutomation('calendar')" class="b-ghost">🗓️ Open calendar</button></div>`;
+    }
+
+
+    // =====================================================================
+    // COLOR THEMES: Original (green) · Blue · Black & White
+    // =====================================================================
+    const colorThemes = {
+      green: { label: 'Original', sub: 'Green', sw: 'linear-gradient(135deg,#2f8a55 55%,#e84a86)' },
+      blue:  { label: 'Blue', sub: 'Ocean', sw: 'linear-gradient(135deg,#2563eb 55%,#0ea5e9)' },
+      bw:    { label: 'Black & White', sub: 'Mono', sw: 'linear-gradient(135deg,#111 50%,#f1f1f1 50%)' }
+    };
+    let colorTheme = 'green';
+    function applyColorTheme(k) {
+      if (!colorThemes[k]) k = 'green';
+      colorTheme = k;
+      document.documentElement.setAttribute('data-theme', k);
+      try { localStorage.setItem('bf-color', k); } catch (e) { /* storage may be unavailable */ }
+    }
+    function pickColorTheme(k) {
+      applyColorTheme(k);
+      openProfile();
+      toast(`🎨 Theme: <b>${colorThemes[k].label}</b>`);
+    }
+
+    // =====================================================================
+    // PLUMY AI CHAT (demo mode: rule-based replies, no external AI call)
+    // =====================================================================
+    const chat = { acts: [], busy: false };
+    const chatChipsList = ['✍️ Write a caption for our new product', '💬 Reply to a delivery question', '🗓️ Plan my week', '🎃 Halloween ideas'];
+    function chatBubble(role, html) {
+      const log = document.getElementById('chatLog');
+      const row = document.createElement('div');
+      if (role === 'user') {
+        row.className = 'flex justify-end';
+        row.innerHTML = `<div class="max-w-[85%] bg-[#2f8a55] text-white rounded-2xl rounded-br-md px-3 py-2 font-semibold whitespace-pre-wrap break-words">${html}</div>`;
+      } else {
+        row.className = 'flex gap-2 items-start';
+        row.innerHTML = `<span class="chat-avatar shrink-0">🌸</span><div class="max-w-[85%] min-w-0 bg-[#f7fbf4] border border-[#cfe7ca] text-[#24432f] rounded-2xl rounded-tl-md px-3 py-2 whitespace-pre-wrap break-words space-y-2">${html}</div>`;
+      }
+      log.appendChild(row);
+      log.scrollTop = log.scrollHeight;
+      return row;
+    }
+    function chatInit() {
+      document.getElementById('chatLog').innerHTML = '';
+      chat.acts = [];
+      chatBubble('ai', 'Hi! I’m Plumy 🌸\n<b>How can I help you?</b>');
+      document.getElementById('chatChips').innerHTML = chatChipsList.map((c, i) => `<button onclick="chatQuick(${i})" class="text-[11px] bg-[#e4f4df] text-[#2f8a55] font-bold px-2.5 py-1 rounded-full text-left">${c}</button>`).join('');
+      chatState();
+    }
+    function chatClear() { chatInit(); document.getElementById('chatInput').focus(); }
+    function chatState() {
+      const el = document.getElementById('chatState'); if (!el) return;
+      el.textContent = sys.plumy ? '● Online · demo mode' : '○ Offline — turn on Plumy AI Support';
+    }
+    function chatGrow(t) { t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, 96) + 'px'; }
+    function chatKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend(); } }
+    function chatQuick(i) { document.getElementById('chatInput').value = chatChipsList[i].replace(/^[^\s]+\s/, ''); chatSend(); }
+    function chatAct(i) { const a = chat.acts[i]; if (a) a(); }
+    function chatSend() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text || chat.busy) return;
+      chatBubble('user', esc(text));
+      input.value = ''; chatGrow(input);
+      chat.busy = true;
+      const typing = chatBubble('ai', '<span class="typing"><i></i><i></i><i></i></span>');
+      setTimeout(() => {
+        typing.remove();
+        const ans = plumyAnswer(text);
+        const btns = (ans.acts || []).map(a => { chat.acts.push(a.fn); return `<button onclick="chatAct(${chat.acts.length - 1})" class="btn-pink text-[11px] px-2.5 py-1 rounded-full font-extrabold">${a.label}</button>`; }).join('');
+        chatBubble('ai', ans.html + (btns ? `<div class="flex flex-wrap gap-1.5 pt-1">${btns}</div>` : ''));
+        chat.busy = false;
+      }, 650);
+    }
+    function plumyAnswer(q) {
+      const t = q.toLowerCase();
+      const P = personas[persona];
+      const box = x => `<div class="p-2 rounded-xl bg-white border border-[#cfe7ca] whitespace-pre-wrap break-words">${esc(x)}</div>`;
+      if (!sys.plumy) return { html: '⏸ <b>Plumy AI Support</b> is offline right now. Turn it on and I’ll help right away.', acts: [{ label: 'Turn Plumy on', fn: () => setSys('plumy', true) }] };
+      if (/halloween|christmas|pasko|new year|nye|media noche|season/.test(t)) {
+        const k = /christmas|pasko/.test(t) ? 'christmas' : /new year|nye|media noche/.test(t) ? 'nye' : 'halloween';
+        const S = seasons[k]; const cap = S.captions[0] + '\n\n' + P.tail + '\n' + S.tags;
+        return { html: `${S.icon} ${S.name} is on <b>${S.date}</b>. Start with the pre-order post, then a countdown story, then a reminder email. Here’s a caption:` + box(cap),
+          acts: [{ label: '📸 Post on Instagram', fn: () => openPost('instagram', { caption: cap, season: { label: S.date, day: S.day } }) }, { label: '📋 Open Project Board', fn: () => openBoard(k) }] };
+      }
+      if (/weather|rain|ulan|init|hot|forecast/.test(t)) {
+        if (!wx) return { html: 'I’m still loading the forecast. Try again in a moment ⛅' };
+        const tip = weatherTip();
+        return { html: `${tip.text}\n\nCaption idea:` + box(tip.caption), acts: [{ label: '📘 Draft post', fn: () => openPost('facebook', { day: 26, caption: tip.caption }) }] };
+      }
+      if (/reply|customer|inquir|magkano|price|presyo|delivery|refund|wholesale|bulk|reseller|dm\b/.test(t)) {
+        let d = 'Hi po! Thanks for messaging us 💚 How can we help with your order?';
+        if (/delivery|ship/.test(t)) d = inquiries.maria.draft;
+        else if (/refund|cancel/.test(t)) d = inquiries.refund.draft;
+        else if (/wholesale|bulk|reseller/.test(t)) d = inquiries.wholesale.draft;
+        else if (/magkano|price|presyo/.test(t)) d = 'Hi po! 💚 Prices start at ₱99. Tell us which item you’d like and we’ll send the exact total with delivery. Salamat!';
+        return { html: 'Here’s a friendly reply you can edit:' + box(d), acts: [{ label: '↩ Use in reply box', fn: () => { openReply('maria'); document.getElementById('replyText').value = d; } }] };
+      }
+      if (/plan|week|schedule|calendar|remind|content/.test(t)) {
+        return { html: `A simple week for a ${esc(P.label)} seller:\n<b>Mon</b> product teaser\n<b>Tue</b> behind-the-scenes\n<b>Wed</b> customer review\n<b>Thu</b> promo reminder\n<b>Fri</b> payday sale 💸\n<b>Sat</b> Q&amp;A / polls\n<b>Sun</b> rest + plan next week`,
+          acts: [{ label: '📅 Add Monday post', fn: () => openDay(26, { name: 'Post: product teaser', time: '18:00', lead: 60 }) }, { label: '💸 Payday reminder', fn: () => openDay(30, { name: 'Payday promo blast', time: '09:00', lead: 1440 }) }] };
+      }
+      if (/caption|write|post|announce|sale|promo|ad\b|launch/.test(t)) {
+        const m = q.match(/(?:for|about|of)\s+(.+)$/i);
+        let subj = (m ? m[1] : 'our latest product').replace(/[?.!]+$/, '').replace(/^(our|my|the)\s+/i, '').slice(0, 50);
+        subj = subj.charAt(0).toUpperCase() + subj.slice(1);
+        const cap = `Fresh and local! 💚 ${subj} is here — grab yours today. DM us to order via GCash or Maya.\n\n${P.tail}\n#BloomfeedPH #SupportLocal`;
+        return { html: `Here’s a caption for <b>${esc(subj)}</b>:` + box(cap), acts: [{ label: '📸 Instagram', fn: () => openPost('instagram', { caption: cap }) }, { label: '📘 Facebook', fn: () => openPost('facebook', { caption: cap }) }, { label: '🎵 TikTok', fn: () => openPost('tiktok', { caption: cap }) }] };
+      }
+      if (/^(hi|hello|hey|kumusta|good (morning|afternoon|evening))\b/.test(t)) return { html: 'Hello! 🌸 I can write captions, draft customer replies, plan your week, or set reminders. <b>How can I help you?</b>' };
+      if (/help|what can you|ano.*kaya/.test(t)) return { html: 'I can:\n• ✍️ write captions\n• 💬 draft replies to customers\n• 🗓️ plan your week and set reminders\n• 🎃 prep Halloween, Christmas and New Year’s Eve posts\nJust tell me what you sell!' };
+      return { html: 'I can help with that! Try asking me to <b>write a caption</b>, <b>reply to a customer</b>, or <b>plan my week</b>. Tell me what you sell and I’ll tailor it 🌸' };
+    }
+
+    // =====================================================================
+    // VIEWPORT GUARD: orientation flips and window resizes
+    // =====================================================================
+    (function viewportGuard() {
+      const root = document.documentElement; let timer;
+      function apply() {
+        const w = window.innerWidth, h = window.innerHeight;
+        root.style.setProperty('--app-h', h + 'px');
+        root.classList.toggle('is-portrait', h >= w);
+        root.classList.toggle('is-landscape', h < w);
+        root.dataset.size = w < 640 ? 'sm' : w < 1024 ? 'md' : w < 1280 ? 'lg' : 'xl';
+        const log = document.getElementById('chatLog'); if (log) log.scrollTop = log.scrollHeight;
+        document.querySelectorAll('[id$="Modal"]:not(.hidden) > div').forEach(m => { m.scrollTop = 0; });
+      }
+      const schedule = () => { clearTimeout(timer); timer = setTimeout(apply, 80); };
+      window.addEventListener('resize', schedule);
+      window.addEventListener('orientationchange', schedule);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
+      apply();
+    })();
+
+    // =====================================================================
+    // LIVE GLOWING CLIP (logged-out hero)
+    // =====================================================================
+    const clip = { t: 0, playing: true, durs: [3600, 2600, 3400, 2400] };
+    clip.total = clip.durs.reduce((a, b) => a + b, 0);
+    clip.caption = 'Sip, smile, repeat! 🍰 Our Ube Cloud Cheesecake is here. Tag a friend who needs a slice! #BloomfeedPH';
+    function clipRender() {
+      let acc = 0, idx = 0, local = 0;
+      for (let i = 0; i < clip.durs.length; i++) { if (clip.t < acc + clip.durs[i]) { idx = i; local = clip.t - acc; break; } acc += clip.durs[i]; }
+      document.querySelectorAll('#liveClip .scene').forEach((el, i) => el.classList.toggle('on', i === idx));
+      document.querySelectorAll('#liveClip .clip-dots button').forEach((el, i) => el.classList.toggle('on', i === idx));
+      const typed = idx === 0 ? clip.caption.slice(0, Math.floor(clip.caption.length * Math.min(1, local / 3000))) : clip.caption;
+      document.getElementById('clipTyped').textContent = idx > 0 ? clip.caption : typed;
+      document.getElementById('clipProg').style.width = (clip.t / clip.total * 100) + '%';
+      const sec = Math.floor(clip.t / 1000);
+      document.getElementById('clipTime').textContent = `0:${String(sec).padStart(2, '0')} / 0:${String(Math.round(clip.total / 1000)).padStart(2, '0')}`;
+    }
+    function clipToggle() { clip.playing = !clip.playing; document.getElementById('clipBtn').textContent = clip.playing ? '⏸' : '▶'; }
+    function clipJump(i) { clip.t = clip.durs.slice(0, i).reduce((a, b) => a + b, 0) + 50; clipRender(); }
+    (function clipInit() {
+      if (!document.getElementById('liveClip')) return;
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { clip.playing = false; clip.t = clip.durs.slice(0, 3).reduce((a, b) => a + b, 0) + 50; document.getElementById('clipBtn').textContent = '▶'; }
+      clipRender();
+      setInterval(() => {
+        const el = document.getElementById('liveClip');
+        if (!clip.playing || !el || el.offsetParent === null || document.hidden) return;
+        clip.t = (clip.t + 100) % clip.total; clipRender();
+      }, 100);
+    })();
+
+
+    // =====================================================================
+    // PROFILE CARD & AUTOMATIONS SECTION TOGGLES
+    // =====================================================================
+    let profileOpen = false;
+    function paintProfileCard() {
+      document.getElementById('profileMore').classList.toggle('hidden', !profileOpen);
+      const b = document.getElementById('profileToggle');
+      b.setAttribute('aria-expanded', String(profileOpen));
+    }
+    function toggleProfileCard() {
+      profileOpen = !profileOpen; paintProfileCard();
+      try { localStorage.setItem('bf-profile-open', profileOpen ? '1' : '0'); } catch (e) { /* ignore */ }
+    }
+    function updateProfileCard() { const el = document.getElementById('profileBiz'); if (el) el.textContent = personas[persona].label; }
+    function initProfileCard() {
+      try { profileOpen = localStorage.getItem('bf-profile-open') === '1'; } catch (e) { profileOpen = false; }
+      paintProfileCard(); updateProfileCard();
+    }
+
+    let automationsOpen = true;
+    function toggleAutomationsSection() {
+      automationsOpen = !automationsOpen;
+      const list = document.getElementById('automationsListContainer');
+      const btn = document.getElementById('automationsToggleBtn');
+      list.classList.toggle('hidden', !automationsOpen);
+      btn.textContent = automationsOpen ? '▾' : '▴';
+      btn.setAttribute('aria-expanded', String(automationsOpen));
+    }
+
+    // =====================================================================
+    // GMAIL (front-end simulation; "Open in Gmail" opens a real prefilled draft)
+    // Real auto-send needs the Gmail API + Google sign-in (OAuth) and a backend.
+    // =====================================================================
+    let mailDay = 25, mailConnected = false;
+    const mailTemplates = [
+      ['🧾 Order confirmed', 'Your order is confirmed 💚', 'Hi there!\n\nThank you for your order! We’re preparing it now and will send your tracking details soon.\n\nSalamat po!'],
+      ['🎉 Promo blast', 'Payday promo: 15% off this weekend 💸', 'Hi!\n\nOur Payday Special is live. Enjoy 15% off all orders until Sunday. Reply to this email or DM us to order.\n\nSalamat po!'],
+      ['💳 Payment reminder', 'Friendly payment reminder', 'Hi!\n\nJust a friendly reminder about your pending payment. You can pay via GCash, Maya, InstaPay or PESONet. Send us a screenshot once done.\n\nSalamat po!'],
+      ['🙏 Thank you', 'Thank you for supporting local 💚', 'Hi!\n\nThank you for shopping with us. Your support helps our small business grow. See you again soon!\n\nSalamat po!']
+    ];
+    function openMail(preset) {
+      preset = preset || {};
+      closeAll();
+      document.getElementById('mailTo').value = preset.to || '';
+      document.getElementById('mailSubject').value = preset.subject || '';
+      document.getElementById('mailBody').value = preset.body || '';
+      document.getElementById('mailFile').value = '';
+      document.getElementById('mailFileName').textContent = '＋ Attach price list, invoice or image';
+      document.getElementById('mailSaved').classList.add('hidden');
+      document.getElementById('mailChips').innerHTML = mailTemplates.map((c, i) => `<button onclick="mailChip(${i})" class="text-[11px] bg-[#e4f4df] text-[#2f8a55] font-bold px-2.5 py-1 rounded-full">${c[0]}</button>`).join('');
+      setMailDay(preset.day || 25);
+      renderMailConnect();
+      document.getElementById('mailModal').classList.remove('hidden');
+      toast('📧 <b>Gmail</b>: send today at a set time, or schedule it for tomorrow.');
+    }
+    function closeMail() { document.getElementById('mailModal').classList.add('hidden'); }
+    function mailChip(i) { document.getElementById('mailSubject').value = mailTemplates[i][1]; document.getElementById('mailBody').value = mailTemplates[i][2]; }
+    function mailPlumy() {
+      document.getElementById('mailSubject').value = document.getElementById('mailSubject').value || 'Fresh updates from our shop 🌸';
+      document.getElementById('mailBody').value = `Hi there!\n\nThank you for supporting our local shop 💚 We have something new and we’d love for you to see it first. Reply to this email to reserve yours.\n\n${personas[persona].tail}\nSalamat po!`;
+      toast('🌸 Plumy drafted your email. Edit it before sending.');
+    }
+    function renderMailConnect() {
+      document.getElementById('mailConnect').innerHTML = mailConnected
+        ? `<span>✅ <b>Gmail</b> account linked — auto-sending available.</span><button onclick="toggleMailConnect()" class="text-red-500 font-black hover:underline shrink-0">Disconnect</button>`
+        : `<span>🔗 <b>Gmail</b> isn’t linked yet. Link it for auto-sending, or use “Remind me to send”.</span><button onclick="toggleMailConnect()" class="btn-green px-3 py-1.5 rounded-full font-extrabold shrink-0">Connect</button>`;
+      const badge = document.getElementById('badge-gmail');
+      badge.textContent = mailConnected ? 'Linked' : 'Connect';
+      badge.className = mailConnected ? 'text-[9px] bg-[#e84a86] text-white px-1.5 py-0.5 rounded' : 'text-[9px] bg-[#355d40] text-green-200 px-1.5 py-0.5 rounded';
+      const canAuto = mailConnected && sys.email;
+      const mode = document.getElementById('mailMode');
+      mode.value = canAuto ? 'auto' : 'remind';
+      mode.querySelector('option[value="auto"]').disabled = !canAuto;
+      updateMailPreview();
+    }
+    function toggleMailConnect() {
+      mailConnected = !mailConnected;   // real version: Google sign-in (OAuth)
+      renderMailConnect();
+      toast(mailConnected ? '✅ Gmail connected (demo).' : 'Gmail disconnected.');
+    }
+    function setMailDay(d) {
+      mailDay = d;
+      const on = 'hub-tab flex-1 px-2 py-2 rounded-full font-extrabold on';
+      const off = 'hub-tab flex-1 px-2 py-2 rounded-full font-extrabold bg-[#e4f4df] text-[#2f8a55]';
+      document.getElementById('mailToday').className = d === 25 ? on : off;
+      document.getElementById('mailTomorrow').className = d === 26 ? on : off;
+      updateMailPreview();
+    }
+    function updateMailPreview() {
+      const mode = document.getElementById('mailMode').value;
+      const lead = Number(document.getElementById('mailLead').value);
+      const time = document.getElementById('mailTime').value;
+      document.getElementById('mailSaveBtn').textContent = mode === 'auto' ? 'Schedule Email' : 'Set Sending Reminder';
+      document.getElementById('mailPreview').innerHTML =
+        `🗓️ Oct ${mailDay} at <b>${fmtTime(time)}</b> on the calendar · ` +
+        (mode === 'auto' ? 'Gmail will <b>send it automatically</b>' : 'you’ll be reminded to <b>send it yourself</b>') + ` · 🔔 reminder <b>${leadText(lead)}</b>.` +
+        (!sys.email ? ' ⚠️ The Email tool is offline.' : '');
+    }
+    function openGmail() {
+      const to = encodeURIComponent(document.getElementById('mailTo').value.trim());
+      const su = encodeURIComponent(document.getElementById('mailSubject').value.trim());
+      const body = encodeURIComponent(document.getElementById('mailBody').value);
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${body}`, '_blank', 'noopener');
+    }
+    function saveMail() {
+      const to = document.getElementById('mailTo').value.trim();
+      const subject = document.getElementById('mailSubject').value.trim();
+      const body = document.getElementById('mailBody').value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) { document.getElementById('mailTo').focus(); toast('📧 Enter a valid email address in “To”.'); return; }
+      if (!subject && !body) { document.getElementById('mailSubject').focus(); toast('✍️ Add a subject or a message first.'); return; }
+      const ev = {
+        id: Date.now(), day: mailDay, dateLabel: `Oct ${mailDay}`, platform: 'gmail',
+        name: `📧 Gmail: ${(subject || 'Email to ' + to).slice(0, 28)}${(subject || '').length > 28 ? '…' : ''}`,
+        time: document.getElementById('mailTime').value || '09:00', loc: '',
+        lead: Number(document.getElementById('mailLead').value), channels: ['In-app', 'Email'],
+        mode: document.getElementById('mailMode').value
+      };
+      addEvent(ev);
+      const box = document.getElementById('mailSaved');
+      box.innerHTML = `✅ Added to your calendar on <b>Oct ${mailDay}</b> for <b>${esc(to)}</b>.<br>🔔 ${reminderLine(ev)}`;
+      box.classList.add('hidden');
+      toast(`📧 Email saved for Oct ${mailDay}, ${fmtTime(ev.time)}.`);
+    }
+
+    // ---- start-up
+    (function init() {
+      let t = null;
+      try { t = localStorage.getItem('bf-theme'); } catch (e) { /* ignore */ }
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      applyTheme(t);
+      let c = null;
+      try { c = localStorage.getItem('bf-color'); } catch (e) { /* ignore */ }
+      applyColorTheme(c || 'green');
+      chatInit();
+      renderPersona();
+      initProfileCard();
+      updateStatusBadge();
+      loadWeather();
+    })();
+
+    // 4. Public Plumy AI Demo Chat
+    function askDemo(q) {
+      const box = document.getElementById('demoChatBox');
+      box.innerHTML += `
+        <div class="bg-[#e4f4df] text-[#24432f] p-2.5 rounded-2xl max-w-[85%] ml-auto text-right font-semibold">
+          ${q}
+        </div>
+      `;
+      box.scrollTop = box.scrollHeight;
+
+      setTimeout(() => {
+        let reply = "Plumy AI: Sure! Here is a response optimized for your Philippine audience 💚";
+        if (q.includes('Sale')) reply = "🔥 PAYDAY SALE ALERT! Enjoy 15% off all orders today. DM us to claim your discount voucher!";
+        if (q.includes('Delivery')) reply = "Hi po! Delivery starts at ₱49 via Lalamove / Grab. Send us your pin address and we'll confirm!";
+        
+        box.innerHTML += `
+          <div class="bg-[#ffe3ee] text-[#24432f] p-2.5 rounded-2xl max-w-[85%] font-semibold">
+            ${reply}
+          </div>
+        `;
+        box.scrollTop = box.scrollHeight;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
